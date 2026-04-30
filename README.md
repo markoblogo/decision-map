@@ -1,61 +1,95 @@
 # DecisionMap
 
-**A practical AI-assisted protocol for mapping complex business and product decisions.**
+**A practical protocol for using AI to map complex business and product decisions.**
 
-DecisionMap is a lightweight protocol and prompt toolkit for using LLMs as structured decision facilitators.
+DecisionMap is not another “AI tool”.  
+It is a structured way to think through decisions where there is no single correct answer — only trade-offs.
+
+---
 
 ## What it is
 
-DecisionMap helps you turn complex business, product, market, and marketing choices into a visible map of strategic options.
+DecisionMap helps you turn messy, high-stakes situations into a **map of strategic options**.
 
-Instead of forcing a single answer, it helps you compare options across:
+Instead of asking:
+> “What should we do?”
+
+it reframes the problem as:
+> “What are our real options — and what does each of them cost?”
+
+Each option is broken down into:
 - expected upside
-- cost and resource requirements
-- risks and likely responses from other parties
-- time horizons
-- assumptions and breakpoints
-- signals to monitor over time
+- cost (money, time, reputation, risk)
+- required resources
+- likely reactions from competitors, customers, or partners
+- short / mid / long-term effects
+- assumptions
+- breakpoints (where it fails)
+- signals to monitor
 
-The final output is a **working strategic hypothesis**, not a claim of certainty.
+The output is not “the answer”.
+
+It is a **working strategic hypothesis**, with visible trade-offs.
+
+---
 
 ## What it is not
 
 DecisionMap is not:
-- a SaaS product (yet)
-- a new AI model
-- a guaranteed prediction engine
-- a replacement for leadership accountability
+- a chatbot that gives advice
+- a prediction engine
+- a replacement for decision-makers
+- a “smart agent” that thinks for you
 
-It is also **not intended** for:
-- military conflict
-- political conflict
-- legal advice
-- medical advice
-- financial investment advice
-- mergers and acquisitions
-- layoffs or HR restructuring
+It does not:
+- guarantee outcomes
+- remove uncertainty
+- make decisions on your behalf
+
+And it is intentionally **out of scope** for:
+- military or political conflict
+- legal or medical advice
+- financial investment decisions
+- M&A, layoffs, or HR restructuring
+
+---
 
 ## When to use it
 
 Use DecisionMap when:
-- the decision has multiple plausible paths
-- uncertainty is high and stakes are meaningful
-- competitors, partners, or market reactions matter
-- your team is stuck between options and needs clearer trade-offs
+- you have multiple plausible strategies and no clear winner
+- the decision involves trade-offs, not right vs wrong
+- competitors or external reactions matter
+- you feel “stuck” — not because the problem is impossible, but because the picture is unclear
 
-## How it differs from a normal AI chat
+---
 
-A normal AI chat often jumps to an answer too quickly.
+## Why not just use ChatGPT?
 
-DecisionMap enforces a sequence:
-1. scope check
-2. intake
-3. clarifying questions
-4. multi-option strategy map
-5. deep dive on selected options
-6. decision summary with assumptions and monitoring signals
+Because most AI chats do this:
 
-It separates facts from assumptions, labels uncertainty, and prevents false precision.
+→ you describe a situation  
+→ it gives you a clean, confident answer  
+
+The problem is:
+- it skips clarification
+- it hides assumptions
+- it collapses multiple options into one narrative
+- it creates an illusion of certainty
+
+DecisionMap does the opposite.
+
+It forces a process:
+1. clarify the problem
+2. expose missing information
+3. build multiple strategies
+4. compare them explicitly
+5. make trade-offs visible
+6. commit to a working hypothesis
+
+This is slower — but real decisions require that.
+
+---
 
 ## Repository structure
 
@@ -81,34 +115,58 @@ decision-map/
 │   └── implementation_notes.md
 ├── LICENSE
 └── .gitignore
-```
+````
 
-## Quick start (manual, with any LLM)
+---
 
-1. Set the model `system` message from `prompts/system_prompt.md`.
-2. Run `prompts/01_intake.md` with your situation.
-3. Run `prompts/02_clarifying_questions.md` and answer thoroughly.
-4. Run `prompts/03_strategy_map.md` to generate 3-7 options.
-5. Run `prompts/04_deep_dive.md` for 1-3 shortlisted options.
-6. Run `prompts/05_decision_summary.md` to produce a working strategy and monitoring plan.
-7. Optionally log updates using `schemas/cascade_log.schema.json`.
+## **Quick start (manual)**
 
-## Privacy note
+You don’t need any app. You can run this with any LLM.
 
-DecisionMap is designed to work with user-provided data only. You should anonymize sensitive or identifiable information before sharing it with any hosted model.
+1. Set the system prompt from `prompts/system_prompt.md`
+2. Run `01_intake.md` with your situation
+3. Answer `02_clarifying_questions.md`
+4. Generate options via `03_strategy_map.md`
+5. Deep dive into selected ones with `04_deep_dive.md`
+6. Finalize with `05_decision_summary.md`
 
-If privacy requirements are strict, run this protocol with a local model or approved internal environment.
+Optional: track updates using the cascade log schema.
 
-## Future optional mini-tool direction
+---
 
-A lightweight local-first web tool can be built later to:
-- guide users through each protocol stage
-- save sessions locally in browser storage
-- export outputs as Markdown/JSON
-- optionally connect to a local LLM or approved API
+## **Privacy**
 
-## Status
+DecisionMap does not require storing data.
 
-**Early protocol draft.**
+However:
 
-The structure is stable enough for pilots and internal workshops, and expected to evolve with real usage feedback.
+- most LLM APIs are external
+- your input may be processed by third-party providers
+
+So:  
+→ anonymize sensitive information  
+→ or run this locally if needed
+
+---
+
+## **Future direction (optional)**
+
+This can be turned into a lightweight tool:
+
+- guided session (instead of free chat)
+- strategy cards instead of text blobs
+- local-first storage
+- export to Markdown / JSON
+
+But the core value is already here:  
+→ the protocol
+
+---
+
+## **Status**
+
+Early version.
+
+The goal is not to build another AI product.
+
+The goal is to define a **clear, usable way to think with AI under uncertainty**.
