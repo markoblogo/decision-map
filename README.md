@@ -131,6 +131,13 @@ Inside the ABVX ecosystem:
 
 None of these integrations are required for manual use.
 
+### Integration status
+
+- `lab.abvx`: added as supporting tool in **Decision & Strategy Protocols** (repo + landing card).
+- `SET`: added as registry entry for tracking/audit (`repo-docs` baseline only; no runtime orchestration).
+- `ID`: added as optional reference/link integration (no hard dependency).
+- `agentsgen`: repo-local docs generated (`AGENTS.md`, `RUNBOOK.md`, `.agentsgen.json`).
+
 ## Optional ABVX integration
 
 - `DecisionMap` stays standalone and usable with any LLM.
