@@ -2,38 +2,115 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://decisionmap.dev/schemas/strategy_map.schema.json",
   "title": "DecisionMap Strategy Map",
-  "description": "Schema for Stage 3 strategy map outputs.",
+  "description": "Schema for DecisionMap Stage 3 first strategy map outputs.",
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "decision",
-    "context_summary",
-    "facts",
-    "global_assumptions",
+    "decision_statement",
+    "known_facts",
+    "key_assumptions",
+    "major_unknowns",
+    "framing_confidence",
     "options",
-    "comparison",
-    "generated_at"
+    "key_tradeoffs",
+    "dominant_uncertainties",
+    "suggested_shortlist",
+    "best_current_working_hypothesis",
+    "what_would_change_this_view"
   ],
+  "$defs": {
+    "confidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "rationale"],
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": ["Low", "Medium", "High"]
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "resource_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["resource", "status"],
+      "properties": {
+        "resource": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["available", "partially_available", "missing", "unknown"]
+        },
+        "notes": { "type": "string" }
+      }
+    },
+    "risk_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["risk", "likelihood", "severity"],
+      "properties": {
+        "risk": { "type": "string" },
+        "likelihood": { "type": "string", "enum": ["Low", "Medium", "High"] },
+        "severity": { "type": "string", "enum": ["Low", "Medium", "High"] },
+        "early_warning_signal": { "type": "string" },
+        "mitigation": { "type": "string" }
+      }
+    },
+    "reaction_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["party", "expected_reaction"],
+      "properties": {
+        "party": { "type": "string" },
+        "expected_reaction": { "type": "string" },
+        "assumption_label": { "type": "string", "enum": ["Fact", "Assumption", "Interpretation", "Unknown"] }
+      }
+    },
+    "dominant_uncertainty_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["uncertainty", "why_it_matters", "affected_options", "reduction_or_test"],
+      "properties": {
+        "uncertainty": { "type": "string" },
+        "why_it_matters": { "type": "string" },
+        "affected_options": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "reduction_or_test": { "type": "string" }
+      }
+    },
+    "shortlist_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["option_name", "why_shortlisted", "next_pressure_test"],
+      "properties": {
+        "option_name": { "type": "string" },
+        "why_shortlisted": { "type": "string" },
+        "next_pressure_test": { "type": "string" }
+      }
+    }
+  },
   "properties": {
-    "decision": {
-      "type": "string",
-      "minLength": 1
-    },
-    "context_summary": {
-      "type": "string"
-    },
-    "facts": {
+    "decision_statement": { "type": "string", "minLength": 1 },
+    "known_facts": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "items": { "type": "string" },
+      "minItems": 1
     },
-    "global_assumptions": {
+    "key_assumptions": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "items": { "type": "string" }
     },
+    "major_unknowns": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "framing_confidence": { "$ref": "#/$defs/confidence" },
     "options": {
       "type": "array",
       "minItems": 3,
@@ -42,161 +119,117 @@
         "type": "object",
         "additionalProperties": false,
         "required": [
-          "id",
           "name",
           "summary",
           "expected_upside",
-          "cost",
+          "price_cost",
           "required_resources",
-          "risks",
-          "likely_reaction",
-          "time_horizon",
-          "assumptions",
+          "key_risks",
+          "likely_reactions",
+          "time_effects",
+          "core_assumptions",
           "breakpoints",
           "signals_to_monitor",
           "confidence"
         ],
         "properties": {
-          "id": {
-            "type": "string",
-            "pattern": "^[A-Za-z0-9_-]+$"
-          },
-          "name": {
-            "type": "string",
-            "minLength": 1
-          },
-          "summary": {
-            "type": "string"
-          },
-          "expected_upside": {
-            "type": "string"
-          },
-          "cost": {
+          "name": { "type": "string", "minLength": 1 },
+          "summary": { "type": "string", "minLength": 1 },
+          "expected_upside": { "type": "string", "minLength": 1 },
+          "price_cost": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["type", "range_or_value", "notes"],
+            "required": [
+              "money",
+              "time",
+              "reputation",
+              "opportunity_cost",
+              "operational_complexity",
+              "customer_trust",
+              "strategic_flexibility_lost"
+            ],
             "properties": {
-              "type": {
-                "type": "string",
-                "enum": ["financial", "time", "opportunity", "mixed"]
-              },
-              "range_or_value": {
-                "type": "string"
-              },
-              "notes": {
-                "type": "string"
-              }
+              "money": { "type": "string" },
+              "time": { "type": "string" },
+              "reputation": { "type": "string" },
+              "opportunity_cost": { "type": "string" },
+              "operational_complexity": { "type": "string" },
+              "customer_trust": { "type": "string" },
+              "strategic_flexibility_lost": { "type": "string" },
+              "notes": { "type": "string" }
             }
           },
           "required_resources": {
             "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "items": { "$ref": "#/$defs/resource_item" }
           },
-          "risks": {
+          "key_risks": {
             "type": "array",
-            "items": {
-              "type": "object",
-              "additionalProperties": false,
-              "required": ["risk", "severity", "likelihood"],
-              "properties": {
-                "risk": {
-                  "type": "string"
-                },
-                "severity": {
-                  "type": "string",
-                  "enum": ["low", "medium", "high"]
-                },
-                "likelihood": {
-                  "type": "string",
-                  "enum": ["low", "medium", "high"]
-                }
-              }
-            }
+            "items": { "$ref": "#/$defs/risk_item" }
           },
-          "likely_reaction": {
+          "likely_reactions": {
             "type": "array",
-            "items": {
-              "type": "object",
-              "additionalProperties": false,
-              "required": ["party", "expected_reaction"],
-              "properties": {
-                "party": {
-                  "type": "string"
-                },
-                "expected_reaction": {
-                  "type": "string"
-                }
-              }
-            }
+            "items": { "$ref": "#/$defs/reaction_item" }
           },
-          "time_horizon": {
+          "time_effects": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["short_term", "mid_term", "long_term"],
+            "required": ["short_term", "medium_term", "long_term"],
             "properties": {
-              "short_term": {
-                "type": "string"
-              },
-              "mid_term": {
-                "type": "string"
-              },
-              "long_term": {
-                "type": "string"
-              }
+              "short_term": { "type": "string" },
+              "medium_term": { "type": "string" },
+              "long_term": { "type": "string" }
             }
           },
-          "assumptions": {
-            "type": "array",
-            "items": {
-              "type": "string"
+          "core_assumptions": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["user_side", "market_side", "other_parties_side"],
+            "properties": {
+              "user_side": { "type": "array", "items": { "type": "string" } },
+              "market_side": { "type": "array", "items": { "type": "string" } },
+              "other_parties_side": { "type": "array", "items": { "type": "string" } }
             }
           },
           "breakpoints": {
             "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "items": { "type": "string" }
           },
           "signals_to_monitor": {
             "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "items": { "type": "string" }
           },
-          "confidence": {
-            "type": "object",
-            "additionalProperties": false,
-            "required": ["score", "rationale"],
-            "properties": {
-              "score": {
-                "type": "integer",
-                "minimum": 0,
-                "maximum": 100
-              },
-              "rationale": {
-                "type": "string"
-              }
-            }
-          }
+          "confidence": { "$ref": "#/$defs/confidence" }
         }
       }
     },
-    "comparison": {
+    "key_tradeoffs": {
       "type": "array",
-      "description": "Optional normalized rows for table rendering.",
-      "items": {
-        "type": "object",
-        "additionalProperties": true
-      }
+      "items": { "type": "string" }
+    },
+    "dominant_uncertainties": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/dominant_uncertainty_item" }
+    },
+    "suggested_shortlist": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 3,
+      "items": { "$ref": "#/$defs/shortlist_item" }
+    },
+    "best_current_working_hypothesis": {
+      "type": "string",
+      "minLength": 1
+    },
+    "what_would_change_this_view": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
     },
     "generated_at": {
       "type": "string",
       "format": "date-time"
-    },
-    "notes": {
-      "type": "string"
     }
   }
 }

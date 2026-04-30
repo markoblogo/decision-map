@@ -2,12 +2,13 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://decisionmap.dev/schemas/cascade_log.schema.json",
   "title": "DecisionMap Cascade Log",
-  "description": "Schema for Stage 6 optional update loop and decision cascade logging.",
+  "description": "Schema for DecisionMap Stage 6 update loop and long-running decision memory.",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "project",
     "parties",
+    "decision_versions",
     "decisions",
     "assumptions",
     "signals",
@@ -15,6 +16,17 @@
     "outcomes",
     "updates"
   ],
+  "$defs": {
+    "confidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "rationale"],
+      "properties": {
+        "level": { "type": "string", "enum": ["Low", "Medium", "High"] },
+        "rationale": { "type": "string", "minLength": 1 }
+      }
+    }
+  },
   "properties": {
     "project": {
       "type": "object",
@@ -25,7 +37,8 @@
         "owner": { "type": "string" },
         "domain": { "type": "string" },
         "created_at": { "type": "string", "format": "date-time" },
-        "description": { "type": "string" }
+        "description": { "type": "string" },
+        "mode": { "type": "string", "enum": ["standard", "project", "premium"] }
       }
     },
     "parties": {
@@ -38,10 +51,39 @@
           "id": { "type": "string" },
           "name": { "type": "string" },
           "role": { "type": "string" },
-          "incentives": {
+          "incentives": { "type": "array", "items": { "type": "string" } },
+          "likely_reaction": { "type": "string" }
+        }
+      }
+    },
+    "decision_versions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "version",
+          "date",
+          "decision_statement",
+          "chosen_strategy",
+          "confidence",
+          "revisit_triggers",
+          "what_changed_since_last_version"
+        ],
+        "properties": {
+          "version": { "type": "string" },
+          "date": { "type": "string", "format": "date-time" },
+          "decision_statement": { "type": "string" },
+          "chosen_strategy": { "type": "string" },
+          "rejected_or_deferred_options": { "type": "array", "items": { "type": "string" } },
+          "accepted_tradeoffs": { "type": "array", "items": { "type": "string" } },
+          "confidence": { "$ref": "#/$defs/confidence" },
+          "revisit_triggers": {
             "type": "array",
-            "items": { "type": "string" }
-          }
+            "items": { "type": "string" },
+            "minItems": 1
+          },
+          "what_changed_since_last_version": { "type": "string" }
         }
       }
     },
@@ -50,16 +92,15 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "title", "status", "working_strategy", "timestamp"],
+        "required": ["id", "title", "status", "working_strategy", "timestamp", "confidence"],
         "properties": {
           "id": { "type": "string" },
           "title": { "type": "string" },
           "status": { "type": "string", "enum": ["open", "active", "revisited", "closed"] },
           "working_strategy": { "type": "string" },
-          "rejected_options": {
-            "type": "array",
-            "items": { "type": "string" }
-          },
+          "rejected_options": { "type": "array", "items": { "type": "string" } },
+          "confidence": { "$ref": "#/$defs/confidence" },
+          "revisit_triggers": { "type": "array", "items": { "type": "string" } },
           "timestamp": { "type": "string", "format": "date-time" }
         }
       }
@@ -73,12 +114,9 @@
         "properties": {
           "id": { "type": "string" },
           "statement": { "type": "string" },
-          "confidence": { "type": "integer", "minimum": 0, "maximum": 100 },
+          "confidence": { "$ref": "#/$defs/confidence" },
           "status": { "type": "string", "enum": ["active", "validated", "invalidated", "unknown"] },
-          "evidence": {
-            "type": "array",
-            "items": { "type": "string" }
-          }
+          "evidence": { "type": "array", "items": { "type": "string" } }
         }
       }
     },
@@ -87,14 +125,15 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "name", "metric", "direction", "threshold"],
+        "required": ["id", "name", "metric", "direction"],
         "properties": {
           "id": { "type": "string" },
           "name": { "type": "string" },
           "metric": { "type": "string" },
           "direction": { "type": "string", "enum": ["up", "down", "stable", "mixed"] },
           "threshold": { "type": "string" },
-          "source": { "type": "string" }
+          "source": { "type": "string" },
+          "related_revisit_triggers": { "type": "array", "items": { "type": "string" } }
         }
       }
     },
@@ -109,7 +148,8 @@
           "description": { "type": "string" },
           "owner": { "type": "string" },
           "status": { "type": "string", "enum": ["planned", "in_progress", "done", "blocked"] },
-          "due_date": { "type": "string", "format": "date" }
+          "due_date": { "type": "string", "format": "date" },
+          "depends_on": { "type": "array", "items": { "type": "string" } }
         }
       }
     },
@@ -123,7 +163,8 @@
           "id": { "type": "string" },
           "summary": { "type": "string" },
           "impact": { "type": "string", "enum": ["positive", "neutral", "negative", "mixed"] },
-          "recorded_at": { "type": "string", "format": "date-time" }
+          "recorded_at": { "type": "string", "format": "date-time" },
+          "related_decision_version": { "type": "string" }
         }
       }
     },
@@ -132,15 +173,20 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "timestamp", "change_summary", "decision_refs"],
+        "required": [
+          "id",
+          "timestamp",
+          "change_summary",
+          "decision_refs",
+          "what_changed_since_last_version"
+        ],
         "properties": {
           "id": { "type": "string" },
           "timestamp": { "type": "string", "format": "date-time" },
           "change_summary": { "type": "string" },
-          "decision_refs": {
-            "type": "array",
-            "items": { "type": "string" }
-          },
+          "decision_refs": { "type": "array", "items": { "type": "string" } },
+          "what_changed_since_last_version": { "type": "string" },
+          "revisit_triggers": { "type": "array", "items": { "type": "string" } },
           "next_review_at": { "type": "string", "format": "date-time" }
         }
       }
