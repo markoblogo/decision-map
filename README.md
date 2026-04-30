@@ -11,6 +11,8 @@ It is a structured way to think through decisions where there is no single corre
 
 DecisionMap helps you turn messy, high-stakes situations into a **map of strategic options**.
 
+It is especially useful when the problem is not lack of intelligence, but a fragmented or distorted picture of reality.
+
 Instead of asking:
 > “What should we do?”
 
@@ -81,11 +83,12 @@ DecisionMap does the opposite.
 
 It forces a process:
 1. clarify the problem
-2. expose missing information
-3. build multiple strategies
-4. compare them explicitly
-5. make trade-offs visible
-6. commit to a working hypothesis
+2. separate facts, assumptions, interpretations, and unknowns
+3. ask only questions that can change the strategy map
+4. build multiple realistic strategies
+5. compare trade-offs, resources, risks, and breakpoints
+6. pressure-test shortlisted options
+7. produce a decision record and working hypothesis
 
 This is slower — but real decisions require that.
 
@@ -157,6 +160,11 @@ This can be turned into a lightweight tool:
 - strategy cards instead of text blobs
 - local-first storage
 - export to Markdown / JSON
+
+Future versions may include:
+- project mode
+- cascade logs for long-running decisions
+- structured memory of decisions, assumptions, signals, outcomes, and revisions
 
 But the core value is already here:  
 → the protocol
