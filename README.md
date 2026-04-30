@@ -119,6 +119,28 @@ For the full step-by-step version, use [USAGE.md](USAGE.md).
 
 ---
 
+## ABVX ecosystem
+
+DecisionMap can be used as a standalone protocol with any LLM.
+
+Inside the ABVX ecosystem:
+- `lab.abvx` lists it as a decision/strategy protocol artifact
+- `agentsgen` can maintain repo-local agent docs for contributors
+- `SET` can track/audit the repository as part of orchestration flows
+- `ID` can optionally provide portable user context for long-running decision work
+
+None of these integrations are required for manual use.
+
+## Optional ABVX integration
+
+- `DecisionMap` stays standalone and usable with any LLM.
+- `ID` is an optional context layer, not a dependency.
+- `SET` should track and audit this repo, but not run runtime orchestration yet.
+- `agentsgen` is the preferred path for repo-local agent-facing docs (`AGENTS.md`, `RUNBOOK.md`, `.agentsgen.json`).
+- `lab.abvx` should position DecisionMap as a supporting tool in **Decision & Strategy Protocols**, not as core stack infrastructure.
+
+---
+
 ## What is included in v0.1
 
 - protocol
