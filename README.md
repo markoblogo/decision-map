@@ -1,5 +1,11 @@
 # DecisionMap
 
+![DecisionMap Logo](DesMaps.png)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/markoblogo/decision-map?style=social)](https://github.com/markoblogo/decision-map/stargazers)
+[![Last commit](https://img.shields.io/github/last-commit/markoblogo/decision-map)](https://github.com/markoblogo/decision-map/commits/main)
+
 **A practical protocol for using AI to map complex business and product decisions.**
 
 DecisionMap is a protocol + prompt toolkit, not a SaaS product and not a new AI model.
