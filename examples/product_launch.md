@@ -1,70 +1,123 @@
-# Example: Product Launch in a Competitive Market
+# Example: Compact Product Launch Case
 
 ## Scenario
 
-A fictional startup, **FlowPilot**, plans to launch an AI-assisted workflow tool for small ecommerce teams.
+**Fictional company:** FlowPilot
 
-Decision: Should FlowPilot launch broadly now, launch to one niche first, or delay launch for deeper product maturity?
+FlowPilot (9-person B2B SaaS team) is launching an AI-assisted customer feedback synthesis tool for product teams. The market is crowded: larger suites already include broad "AI insights" features. FlowPilot has a limited launch budget, early pilot interest, and unclear positioning.
 
-## Stage 1-2 snapshot
+## Decision statement
 
-### Facts
-- Team: 7 people (2 engineers, 1 designer, 1 PM, 1 growth lead, 2 founders).
-- Runway: 11 months.
-- Current beta users: 42 teams.
-- Retention after 6 weeks: 46%.
-- Two large competitors recently added overlapping features.
+How should FlowPilot launch in the next 90 days to reach early paid traction without burning team capacity or damaging trust?
 
-### Assumptions
-- Ecommerce operators value setup speed more than advanced customization.
-- Competitors will prioritize enterprise accounts over small teams.
+## Known facts
 
-### Unknowns
-- Will self-serve onboarding convert cold traffic?
-- Is current reliability sufficient for paid launch?
+- Team: 9 people; GTM execution is mainly 1 PMM + 1 founder.
+- Launch budget cap: $38k for 90 days.
+- 24 pilot accounts; 8 are active weekly.
+- Time-to-value is good for structured interview-heavy teams, weaker for mixed data inputs.
+- Two larger competitors can bundle adjacent functionality at lower apparent price.
 
-## Stage 3 strategy map (condensed)
+## Assumptions
 
-| Option | Summary | Upside | Cost | Key Risks | Confidence |
-|---|---|---|---|---|---|
-| A: Broad Launch Now | Launch publicly across all SMB ecommerce | Fast awareness, early revenue | High support load, paid acquisition spend | Churn from immature onboarding | 44 |
-| B: Niche Beachhead | Launch only for Shopify apparel stores | Better fit, clearer messaging, stronger references | Slower top-line growth | Market too narrow for near-term revenue targets | 71 |
-| C: Delay + Reliability Sprint | Delay launch 8 weeks, improve core reliability and activation | Better retention base, fewer support fires | Opportunity cost, competitor noise | Team morale + runway pressure | 63 |
+- A narrow segment message will convert better than broad "for everyone" positioning.
+- Early references matter more than top-of-funnel volume in first 90 days.
+- Buyers will pay if insight quality is clearly better than manual synthesis.
 
-## Stage 4 deep-dive result
+## Missing information
 
-Shortlisted options: B and C.
+- Price elasticity by segment.
+- Which acquisition channel can scale beyond founder audience.
+- Minimum onboarding quality threshold before a broader launch.
 
-- Option B has stronger go-to-market clarity and lower execution risk.
-- Option C improves product fundamentals but increases timing risk.
+## First strategy map
 
-Suggested combination:
-- Execute a **4-week reliability sprint** (partial C), then launch with **niche beachhead positioning** (B).
+### Option A: Narrow Niche Wedge Launch
+- **Summary:** Launch only to product teams at B2B SaaS companies running recurring interviews.
+- **Expected upside:** stronger conversion quality, clearer positioning, faster case-study creation.
+- **Price/cost:**
+  - money: medium (targeted outbound + webinars)
+  - time: medium/high (high-touch onboarding)
+  - reputation: low/medium
+  - opportunity_cost: delayed expansion to adjacent segments
+  - operational_complexity: medium
+- **Required resources:** precise ICP list, PMM execution, founder demos, onboarding playbook.
+- **Key risks:** segment may be too narrow for target pace.
+- **Likely reactions:**
+  - competitors may ignore initially, then copy language
+  - customers in niche likely respond positively; others may not engage
+- **Breakpoints:** <12% demo-to-paid conversion after 6 weeks.
+- **Signals to monitor:** qualified demo rate, activation in first 10 days, 30-day active usage.
+- **Confidence:** Medium
 
-## Stage 5 decision summary (working)
+### Option B: Public Founder-Led Launch
+- **Summary:** Broad launch via founder content, webinars, and social proof.
+- **Expected upside:** fast awareness growth with low direct spend.
+- **Price/cost:**
+  - money: low/medium
+  - time: high founder attention
+  - reputation: medium if claims outrun product reality
+  - opportunity_cost: less founder time for product and sales
+  - operational_complexity: medium
+- **Required resources:** consistent content cadence, distribution discipline, response ops.
+- **Key risks:** awareness without qualified conversion.
+- **Likely reactions:**
+  - competitors unlikely to react immediately
+  - customers engage content but may not buy quickly
+- **Breakpoints:** high inbound volume with <5% trial-to-paid conversion.
+- **Signals to monitor:** content-to-demo conversion, trial quality score, founder bandwidth burn.
+- **Confidence:** Low
 
-### Chosen working strategy
-Option B with a short reliability gate before launch.
+### Option C: Partner/Agency Channel Launch
+- **Summary:** Acquire customers through research agencies and consultants.
+- **Expected upside:** leveraged distribution and borrowed trust.
+- **Price/cost:**
+  - money: medium (enablement + rev share)
+  - time: high (partner activation cycles)
+  - reputation: medium (depends on partner quality)
+  - opportunity_cost: slower direct learning from end users
+  - operational_complexity: high
+- **Required resources:** partner management time, channel collateral, onboarding support.
+- **Key risks:** too slow for 90-day traction goals.
+- **Likely reactions:**
+  - competitors can counter with partner incentives
+  - partners may show interest but activate slowly
+- **Breakpoints:** <2 active partners and no partner-sourced deal in 60 days.
+- **Signals to monitor:** partner activation rate, partner pipeline velocity, first deal cycle time.
+- **Confidence:** Low
 
-### Why
-- Balances speed and quality under runway constraints.
-- Maximizes learning density from a specific segment.
-- Reduces support complexity during first paid cohort.
+### Option D: Design Partner Private Beta-to-Paid
+- **Summary:** Keep launch semi-private, convert selected design partners into paid references first.
+- **Expected upside:** better retention base, stronger proof before broader launch.
+- **Price/cost:**
+  - money: low/medium
+  - time: high (hands-on support)
+  - reputation: low risk
+  - opportunity_cost: slower visible growth
+  - operational_complexity: medium
+- **Required resources:** strong feedback loops, onboarding support, reference-building discipline.
+- **Key risks:** may miss quarter targets if conversions are slow.
+- **Likely reactions:**
+  - competitors likely do not react early
+  - customers trust improves with concrete case studies
+- **Breakpoints:** <30% partner-to-paid conversion after two cohorts.
+- **Signals to monitor:** time-to-value, conversion checkpoints, case-study readiness.
+- **Confidence:** Medium
 
-### Rejected/deferred
-- A deferred due to high churn/support risk.
-- Full C deferred due to delay risk under competition pressure.
+## Suggested shortlist
 
-### Trade-offs accepted
-- Accept slower top-line growth in exchange for stronger retention and positioning signal.
+1. **Narrow Niche Wedge Launch**
+- Best immediate fit with positioning problem and limited resources.
 
-### Signals to monitor
-- Activation to first value within 48 hours
-- 30-day retention by cohort
-- Support tickets per active account
-- Win/loss notes versus named competitors
+2. **Design Partner Private Beta-to-Paid**
+- Strongest risk-control path for retention and proof quality.
 
-### Revisit trigger
-Revisit in 6 weeks or earlier if 30-day retention remains below 35%.
+## Working hypothesis
 
-This is a working hypothesis, not a final truth.
+Run a staged approach: 4-6 weeks of design-partner conversion to strengthen proof and onboarding, then launch a narrow niche wedge campaign with evidence-backed positioning.
+
+## What would change this view
+
+- Design partner conversion is too slow to support 90-day goals.
+- Niche outbound fails to produce qualified pipeline.
+- Competitors respond with aggressive bundled pricing that erodes wedge viability.

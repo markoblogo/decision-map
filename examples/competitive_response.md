@@ -1,71 +1,126 @@
-# Example: Small Company Responding to a Large Competitor
+# Example: Compact Competitive Response Case
 
 ## Scenario
 
-A fictional company, **NicheDesk**, sells lightweight CRM tools for independent consultancies.
+**Fictional company:** NicheDesk
 
-A major platform vendor launches a new "free" CRM tier targeting the same audience.
+NicheDesk sells lightweight CRM software for independent consultancies and small advisory teams. A much larger competitor has entered the niche with a new free tier and broad distribution.
 
-Decision: Should NicheDesk cut price, double down on specialization, or pivot upmarket?
+## Decision statement
 
-## Stage 1-2 snapshot
+How should NicheDesk respond over the next 12 weeks to defend retention and keep growth viable without triggering a destructive price war?
 
-### Facts
-- NicheDesk has 1,900 paying customers.
-- Gross margin is healthy, but growth slowed from 9% to 3% QoQ.
+## Known facts
+
+- 2,100 paying customers; growth slowed from 8% to 2.5% QoQ.
 - Churn is concentrated in price-sensitive solo users.
-- Power users cite workflow templates and personal support as top value.
+- Strongest retention comes from workflow templates and implementation support.
+- Larger competitor can subsidize pricing and has stronger brand distribution.
+- NicheDesk has healthy gross margin but limited GTM headcount.
 
-### Assumptions
-- The large competitor's free tier will upsell aggressively in 3-6 months.
-- NicheDesk can win on vertical-specific workflows and support quality.
+## Assumptions
 
-### Unknowns
-- How many existing customers will switch in the next 90 days?
-- Will new leads default to the free alternative without trials?
+- The competitor will prioritize fast user acquisition over deep vertical workflow quality.
+- NicheDesk can defend on specialization and support depth.
+- Mid-size consultancy teams are less price-sensitive than solo users.
 
-## Stage 3 strategy map (condensed)
+## Missing information
 
-| Option | Summary | Upside | Cost | Key Risks | Confidence |
-|---|---|---|---|---|---|
-| A: Defensive Price Cut | Reduce price by 20-30% | Retains some price-sensitive users | Margin compression | Triggers price war, weak differentiation | 39 |
-| B: Specialization Push | Focus on consultancy-specific workflows, templates, and services | Strong differentiation, pricing power | Product + content investment | Message may be too narrow | 74 |
-| C: Upmarket Pivot | Move toward small agencies (5-30 seats) | Higher ACV, lower price sensitivity | Sales motion changes | Longer cycles, execution strain | 58 |
+- True switching risk in top revenue cohorts.
+- Segment-level willingness to pay for specialized workflows.
+- Whether upmarket motion can convert fast enough with current team.
 
-## Stage 4 deep-dive result
+## First strategy map
 
-Shortlisted options: B and C.
+### Option A: Defensive Price Cut
+- **Summary:** Cut pricing 20-30% across core plans.
+- **Expected upside:** reduce immediate churn in price-sensitive cohorts.
+- **Price/cost:**
+  - money: high margin sacrifice
+  - time: low implementation time
+  - reputation: medium (signals weaker value)
+  - opportunity_cost: less budget for product differentiation
+  - operational_complexity: low/medium
+- **Required resources:** pricing ops, comms rollout, finance guardrails.
+- **Key risks:** race-to-the-bottom dynamic; reduced ability to invest.
+- **Likely reactions:**
+  - large competitor can match or undercut quickly
+  - customers may delay purchase expecting future discounts
+- **Breakpoints:** gross margin drops below internal floor for two months.
+- **Signals to monitor:** churn change by segment, ARPU trend, competitor counter-pricing.
+- **Confidence:** Low
 
-- B is immediately actionable and aligned with current strengths.
-- C is promising but needs capability build (sales + onboarding).
+### Option B: Specialization Push (Vertical Defense)
+- **Summary:** Double down on consultancy-specific workflows, templates, and guided onboarding.
+- **Expected upside:** stronger differentiation and improved retention quality.
+- **Price/cost:**
+  - money: medium (product/content investment)
+  - time: medium/high
+  - reputation: low positive if execution is strong
+  - opportunity_cost: slower broad-market expansion
+  - operational_complexity: medium
+- **Required resources:** template roadmap, PMM narrative, onboarding playbooks, customer evidence.
+- **Key risks:** differentiation message may be too narrow; execution bottlenecks.
+- **Likely reactions:**
+  - competitor may launch generic "vertical" pages but with weaker depth
+  - core customers likely value deeper workflow fit
+- **Breakpoints:** template adoption and retention lift do not improve in 8 weeks.
+- **Signals to monitor:** feature adoption depth, NRR by segment, win/loss reasons.
+- **Confidence:** Medium
 
-Working direction:
-- Run B as primary strategy now.
-- Run limited C experiments with one new agency-focused package.
+### Option C: Upmarket Pivot (5-30 Seat Teams)
+- **Summary:** Shift focus to larger consultancy teams with higher ACV and lower price sensitivity.
+- **Expected upside:** better revenue quality, less exposure to free-tier pressure.
+- **Price/cost:**
+  - money: medium (sales enablement + onboarding changes)
+  - time: high (longer sales cycles)
+  - reputation: low
+  - opportunity_cost: near-term logo volume decline
+  - operational_complexity: high
+- **Required resources:** sales motion upgrades, implementation packaging, success capacity.
+- **Key risks:** cycle length may exceed 12-week response window.
+- **Likely reactions:**
+  - competitor may ignore this segment short-term
+  - buyers expect stronger onboarding and proof
+- **Breakpoints:** pipeline quality improves but no closed-won movement by week 10.
+- **Signals to monitor:** ACV trend, cycle length, conversion through pilot offers.
+- **Confidence:** Low
 
-## Stage 5 decision summary (working)
+### Option D: Hybrid Defense (Specialization + Targeted Save Offers)
+- **Summary:** Keep pricing mostly stable; use targeted retention offers for at-risk solo users while executing specialization push.
+- **Expected upside:** protect margin while reducing avoidable churn.
+- **Price/cost:**
+  - money: low/medium (targeted discounts only)
+  - time: medium
+  - reputation: low
+  - opportunity_cost: added operational coordination
+  - operational_complexity: medium/high
+- **Required resources:** churn-risk segmentation, lifecycle messaging, success ops discipline.
+- **Key risks:** operational complexity may reduce execution speed.
+- **Likely reactions:**
+  - competitor may continue broad price pressure
+  - customers perceive stable value narrative with selective flexibility
+- **Breakpoints:** save offers fail to improve retention while increasing support burden.
+- **Signals to monitor:** at-risk cohort retention, save-offer conversion, margin stability.
+- **Confidence:** Medium
 
-### Chosen working strategy
-Option B with controlled C experiments.
+## Suggested shortlist
 
-### Why
-- Uses existing product advantage and customer proof.
-- Avoids destructive margin erosion from pricing battles.
-- Preserves strategic flexibility if upmarket signals improve.
+1. **Specialization Push (Vertical Defense)**
+- Best strategic fit with current strengths and defensibility.
 
-### Rejected/deferred
-- A rejected due to high risk of a race-to-the-bottom dynamic.
+2. **Hybrid Defense (Specialization + Targeted Save Offers)**
+- Better downside control than broad discounting while preserving margin quality.
 
-### Trade-offs accepted
-- Accept slower short-term logo growth in exchange for stronger defensibility and margin quality.
+3. **Upmarket Pivot** (parallel experiment)
+- Useful as a controlled secondary bet for future resilience.
 
-### Signals to monitor
-- Win rate versus free-tier competitor
-- Net revenue retention
-- Template adoption depth
-- Agency pilot conversion for upmarket tests
+## Working hypothesis
 
-### Revisit trigger
-Revisit in 8 weeks or if NRR drops below 90% for two consecutive months.
+Use Specialization Push as the primary response, supported by targeted save offers for high-risk cohorts; run a limited upmarket pilot to test whether revenue quality can improve without overloading execution.
 
-This is a working hypothesis, not a final truth.
+## What would change this view
+
+- If competitor-driven churn accelerates in high-value cohorts, stronger pricing intervention may be required.
+- If specialization improvements do not move retention within 8 weeks, reallocate to upmarket acceleration.
+- If upmarket pilot shows faster-than-expected conversion, shift GTM focus earlier.
