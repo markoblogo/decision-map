@@ -2,14 +2,15 @@
 
 **A practical protocol for using AI to map complex business and product decisions.**
 
-DecisionMap is not another “AI tool”.  
-It is a structured way to think through decisions where there is no single correct answer — only trade-offs.
+DecisionMap is a protocol + prompt toolkit, not a SaaS product and not a new AI model.
+
+It is a structured way to think through decisions where there is no single correct answer, only trade-offs under uncertainty.
 
 ---
 
 ## What it is
 
-DecisionMap helps you turn messy, high-stakes situations into a **map of strategic options**.
+DecisionMap helps you turn messy, high-stakes business, product, market, and marketing situations into a **map of strategic options**.
 
 It is especially useful when the problem is not lack of intelligence, but a fragmented or distorted picture of reality.
 
@@ -17,9 +18,9 @@ Instead of asking:
 > “What should we do?”
 
 it reframes the problem as:
-> “What are our real options — and what does each of them cost?”
+> “What are our real options, and what does each of them cost?”
 
-Each option is broken down into:
+Each option is mapped by:
 - expected upside
 - cost (money, time, reputation, risk)
 - required resources
@@ -29,7 +30,7 @@ Each option is broken down into:
 - breakpoints (where it fails)
 - signals to monitor
 
-The output is not “the answer”.
+The core output is not a final answer.
 
 It is a **working strategic hypothesis**, with visible trade-offs.
 
@@ -48,7 +49,7 @@ It does not:
 - remove uncertainty
 - make decisions on your behalf
 
-And it is intentionally **out of scope** for:
+And it is intentionally out of scope for:
 - military or political conflict
 - legal or medical advice
 - financial investment decisions
@@ -62,26 +63,15 @@ Use DecisionMap when:
 - you have multiple plausible strategies and no clear winner
 - the decision involves trade-offs, not right vs wrong
 - competitors or external reactions matter
-- you feel “stuck” — not because the problem is impossible, but because the picture is unclear
+- you feel stuck because the picture is unclear
 
 ---
 
-## Why not just use ChatGPT?
+## How it differs from a normal AI chat
 
-Because most AI chats do this:
+Many AI chats jump from context to a clean recommendation too quickly.
 
-→ you describe a situation  
-→ it gives you a clean, confident answer  
-
-The problem is:
-- it skips clarification
-- it hides assumptions
-- it collapses multiple options into one narrative
-- it creates an illusion of certainty
-
-DecisionMap does the opposite.
-
-It forces a process:
+DecisionMap forces a disciplined process:
 1. clarify the problem
 2. separate facts, assumptions, interpretations, and unknowns
 3. ask only questions that can change the strategy map
@@ -90,7 +80,56 @@ It forces a process:
 6. pressure-test shortlisted options
 7. produce a decision record and working hypothesis
 
-This is slower — but real decisions require that.
+This is slower, but better aligned with real strategic decisions.
+
+---
+
+## Usage
+
+For a full copy-paste workflow with any LLM, see [USAGE.md](/Users/antonbiletskiy-volokh/Downloads/Projects/DecisionMap/USAGE.md).
+
+## Quick start (manual)
+
+You don’t need any app.
+
+1. Set the system prompt from `prompts/system_prompt.md`
+2. Run `01_intake.md` with your situation
+3. Answer `02_clarifying_questions.md`
+4. Generate options via `03_strategy_map.md`
+5. Deep dive with `04_deep_dive.md`
+6. Finalize with `05_decision_summary.md`
+
+Optional: track updates using `schemas/cascade_log.schema.json`.
+
+For the full step-by-step version, use [USAGE.md](/Users/antonbiletskiy-volokh/Downloads/Projects/DecisionMap/USAGE.md).
+
+---
+
+## Examples
+
+- [examples/full_run_product_launch.md](/Users/antonbiletskiy-volokh/Downloads/Projects/DecisionMap/examples/full_run_product_launch.md) — complete end-to-end example
+- [examples/product_launch.md](/Users/antonbiletskiy-volokh/Downloads/Projects/DecisionMap/examples/product_launch.md) — compact product launch case
+- [examples/competitive_response.md](/Users/antonbiletskiy-volokh/Downloads/Projects/DecisionMap/examples/competitive_response.md) — compact competitive response case
+
+---
+
+## What is included in v0.1
+
+- protocol
+- reusable prompts
+- JSON schemas
+- manual usage workflow
+- example cases
+- Codex notes for a future mini-tool
+
+## What is not included yet
+
+- web app
+- hosted service
+- authentication
+- persistent project memory
+- LLM integration
+- local model runner
 
 ---
 
@@ -99,6 +138,7 @@ This is slower — but real decisions require that.
 ```text
 decision-map/
 ├── README.md
+├── USAGE.md
 ├── protocol.md
 ├── prompts/
 │   ├── system_prompt.md
@@ -111,6 +151,7 @@ decision-map/
 │   ├── strategy_map.schema.json
 │   └── cascade_log.schema.json
 ├── examples/
+│   ├── full_run_product_launch.md
 │   ├── product_launch.md
 │   └── competitive_response.md
 ├── codex/
@@ -118,69 +159,38 @@ decision-map/
 │   └── implementation_notes.md
 ├── LICENSE
 └── .gitignore
-````
+```
 
 ---
 
-## **Usage**
-
-For a full copy-paste workflow, see `USAGE.md`.
-
-## **Quick start (manual)**
-
-You don’t need any app. You can run this with any LLM.
-
-1. Set the system prompt from `prompts/system_prompt.md`
-2. Run `01_intake.md` with your situation
-3. Answer `02_clarifying_questions.md`
-4. Generate options via `03_strategy_map.md`
-5. Deep dive into selected ones with `04_deep_dive.md`
-6. Finalize with `05_decision_summary.md`
-
-Optional: track updates using the cascade log schema.
-
-For the full step-by-step copy-paste version, use `USAGE.md`.
-
----
-
-## **Privacy**
+## Privacy
 
 DecisionMap does not require storing data.
 
 However:
-
-- most LLM APIs are external
+- most hosted LLM APIs process data externally
 - your input may be processed by third-party providers
 
-So:  
-→ anonymize sensitive information  
-→ or run this locally if needed
+For sensitive work:
+- anonymize names, companies, exact financials, customer data, and internal documents
+- or run in a local model / approved internal environment
 
 ---
 
-## **Future direction (optional)**
-
-This can be turned into a lightweight tool:
-
-- guided session (instead of free chat)
-- strategy cards instead of text blobs
-- local-first storage
-- export to Markdown / JSON
+## Future direction (optional)
 
 Future versions may include:
 - project mode
 - cascade logs for long-running decisions
 - structured memory of decisions, assumptions, signals, outcomes, and revisions
 
-But the core value is already here:  
-→ the protocol
+But the core value is already here:
+- options, not answers
+- working hypothesis, not final truth
+- clarity under uncertainty
 
 ---
 
-## **Status**
+## Version
 
-Early version.
-
-The goal is not to build another AI product.
-
-The goal is to define a **clear, usable way to think with AI under uncertainty**.
+Current status: v0.1 protocol draft.
