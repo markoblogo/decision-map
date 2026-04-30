@@ -122,6 +122,10 @@ decision-map/
 
 ---
 
+## **Usage**
+
+For a full copy-paste workflow, see `USAGE.md`.
+
 ## **Quick start (manual)**
 
 You don’t need any app. You can run this with any LLM.
@@ -134,6 +138,8 @@ You don’t need any app. You can run this with any LLM.
 6. Finalize with `05_decision_summary.md`
 
 Optional: track updates using the cascade log schema.
+
+For the full step-by-step copy-paste version, use `USAGE.md`.
 
 ---
 
