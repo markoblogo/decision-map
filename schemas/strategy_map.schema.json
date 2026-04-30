@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://decisionmap.dev/schemas/strategy_map.schema.json",
+  "title": "DecisionMap Strategy Map",
+  "description": "Schema for Stage 3 strategy map outputs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "decision",
+    "context_summary",
+    "facts",
+    "global_assumptions",
+    "options",
+    "comparison",
+    "generated_at"
+  ],
+  "properties": {
+    "decision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "context_summary": {
+      "type": "string"
+    },
+    "facts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "global_assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "options": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "summary",
+          "expected_upside",
+          "cost",
+          "required_resources",
+          "risks",
+          "likely_reaction",
+          "time_horizon",
+          "assumptions",
+          "breakpoints",
+          "signals_to_monitor",
+          "confidence"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "summary": {
+            "type": "string"
+          },
+          "expected_upside": {
+            "type": "string"
+          },
+          "cost": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type", "range_or_value", "notes"],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["financial", "time", "opportunity", "mixed"]
+              },
+              "range_or_value": {
+                "type": "string"
+              },
+              "notes": {
+                "type": "string"
+              }
+            }
+          },
+          "required_resources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "risks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["risk", "severity", "likelihood"],
+              "properties": {
+                "risk": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": ["low", "medium", "high"]
+                },
+                "likelihood": {
+                  "type": "string",
+                  "enum": ["low", "medium", "high"]
+                }
+              }
+            }
+          },
+          "likely_reaction": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["party", "expected_reaction"],
+              "properties": {
+                "party": {
+                  "type": "string"
+                },
+                "expected_reaction": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "time_horizon": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["short_term", "mid_term", "long_term"],
+            "properties": {
+              "short_term": {
+                "type": "string"
+              },
+              "mid_term": {
+                "type": "string"
+              },
+              "long_term": {
+                "type": "string"
+              }
+            }
+          },
+          "assumptions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "breakpoints": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "signals_to_monitor": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "confidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["score", "rationale"],
+            "properties": {
+              "score": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "rationale": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "comparison": {
+      "type": "array",
+      "description": "Optional normalized rows for table rendering.",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      }
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

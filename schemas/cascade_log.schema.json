@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://decisionmap.dev/schemas/cascade_log.schema.json",
+  "title": "DecisionMap Cascade Log",
+  "description": "Schema for Stage 6 optional update loop and decision cascade logging.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "project",
+    "parties",
+    "decisions",
+    "assumptions",
+    "signals",
+    "actions",
+    "outcomes",
+    "updates"
+  ],
+  "properties": {
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "owner", "domain", "created_at"],
+      "properties": {
+        "name": { "type": "string" },
+        "owner": { "type": "string" },
+        "domain": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "description": { "type": "string" }
+      }
+    },
+    "parties": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "role"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "role": { "type": "string" },
+          "incentives": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "status", "working_strategy", "timestamp"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "status": { "type": "string", "enum": ["open", "active", "revisited", "closed"] },
+          "working_strategy": { "type": "string" },
+          "rejected_options": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "timestamp": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "statement", "confidence", "status"],
+        "properties": {
+          "id": { "type": "string" },
+          "statement": { "type": "string" },
+          "confidence": { "type": "integer", "minimum": 0, "maximum": 100 },
+          "status": { "type": "string", "enum": ["active", "validated", "invalidated", "unknown"] },
+          "evidence": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "signals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "metric", "direction", "threshold"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "metric": { "type": "string" },
+          "direction": { "type": "string", "enum": ["up", "down", "stable", "mixed"] },
+          "threshold": { "type": "string" },
+          "source": { "type": "string" }
+        }
+      }
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "description", "owner", "status"],
+        "properties": {
+          "id": { "type": "string" },
+          "description": { "type": "string" },
+          "owner": { "type": "string" },
+          "status": { "type": "string", "enum": ["planned", "in_progress", "done", "blocked"] },
+          "due_date": { "type": "string", "format": "date" }
+        }
+      }
+    },
+    "outcomes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "summary", "impact", "recorded_at"],
+        "properties": {
+          "id": { "type": "string" },
+          "summary": { "type": "string" },
+          "impact": { "type": "string", "enum": ["positive", "neutral", "negative", "mixed"] },
+          "recorded_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "updates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "timestamp", "change_summary", "decision_refs"],
+        "properties": {
+          "id": { "type": "string" },
+          "timestamp": { "type": "string", "format": "date-time" },
+          "change_summary": { "type": "string" },
+          "decision_refs": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "next_review_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}
