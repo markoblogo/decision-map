@@ -2,6 +2,12 @@
 
 DecisionMap can be used without any app. Copy the system prompt, then run the stage prompts in order.
 
+## What you need
+
+- Any LLM chat interface (hosted or local).
+- Access to this repository's `prompts/`, `protocol.md`, and `schemas/`.
+- Your decision context (notes, metrics, constraints, and relevant evidence).
+
 ## Before you start
 
 - Choose a business, product, market, or marketing decision.
@@ -9,7 +15,7 @@ DecisionMap can be used without any app. Copy the system prompt, then run the st
 - Prepare relevant notes, docs, links, metrics, or context.
 - Do not use DecisionMap for out-of-scope domains listed in `README.md` and `protocol.md`.
 
-## Step-by-step copy-paste workflow
+## Copy-paste workflow
 
 ### Step 0
 
@@ -51,10 +57,10 @@ DecisionMap can be used without any app. Copy the system prompt, then run the st
 - Use `schemas/cascade_log.schema.json` if you are continuing the decision over time.
 - Use project mode manually by copying the decision summary into a new update session.
 
-## Privacy note
+## Privacy
 
 - Hosted models may process your data externally.
-- Anonymize names, companies, exact financials, customer data, and internal documents.
+- Anonymize names, companies, exact financials, customer data, internal documents, and personal data.
 - For sensitive work, use a local model or an approved internal environment.
 
 ## What good output looks like
