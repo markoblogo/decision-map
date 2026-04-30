@@ -231,7 +231,7 @@ The facilitator returns:
 - unresolved unknowns
 - assumptions confirmed by the user
 - assumptions still unconfirmed
-- confidence in the problem framing: low / medium / high
+- confidence in the problem framing: Low / Medium / High
 
 ### Gate to proceed
 
@@ -280,7 +280,7 @@ They should not be cosmetic variations of the same idea.
 - **Signals to monitor**
   - what would show that this option is working or failing
 - **Confidence level**
-  - low / medium / high
+  - Low / Medium / High
 
 ### Output
 

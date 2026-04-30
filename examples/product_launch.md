@@ -112,7 +112,7 @@ How should FlowPilot launch in the next 90 days to reach early paid traction wit
 2. **Design Partner Private Beta-to-Paid**
 - Strongest risk-control path for retention and proof quality.
 
-## Working hypothesis
+## Working strategic hypothesis
 
 Run a staged approach: 4-6 weeks of design-partner conversion to strengthen proof and onboarding, then launch a narrow niche wedge campaign with evidence-backed positioning.
 

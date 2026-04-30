@@ -86,7 +86,7 @@ This is slower, but better aligned with real strategic decisions.
 
 ## Usage
 
-For a full copy-paste workflow with any LLM, see [USAGE.md](/Users/antonbiletskiy-volokh/Downloads/Projects/DecisionMap/USAGE.md).
+For a full copy-paste workflow with any LLM, see [USAGE.md](USAGE.md).
 
 ## Quick start (manual)
 
@@ -101,15 +101,15 @@ You don’t need any app.
 
 Optional: track updates using `schemas/cascade_log.schema.json`.
 
-For the full step-by-step version, use [USAGE.md](/Users/antonbiletskiy-volokh/Downloads/Projects/DecisionMap/USAGE.md).
+For the full step-by-step version, use [USAGE.md](USAGE.md).
 
 ---
 
 ## Examples
 
-- [examples/full_run_product_launch.md](/Users/antonbiletskiy-volokh/Downloads/Projects/DecisionMap/examples/full_run_product_launch.md) — complete end-to-end example
-- [examples/product_launch.md](/Users/antonbiletskiy-volokh/Downloads/Projects/DecisionMap/examples/product_launch.md) — compact product launch case
-- [examples/competitive_response.md](/Users/antonbiletskiy-volokh/Downloads/Projects/DecisionMap/examples/competitive_response.md) — compact competitive response case
+- [examples/full_run_product_launch.md](examples/full_run_product_launch.md) — complete end-to-end example
+- [examples/product_launch.md](examples/product_launch.md) — compact product launch case
+- [examples/competitive_response.md](examples/competitive_response.md) — compact competitive response case
 
 ---
 

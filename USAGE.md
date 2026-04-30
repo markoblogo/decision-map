@@ -79,7 +79,7 @@ A good DecisionMap run should produce:
 
 ## Related files
 
-- [README.md](/Users/antonbiletskiy-volokh/Downloads/Projects/DecisionMap/README.md)
-- [protocol.md](/Users/antonbiletskiy-volokh/Downloads/Projects/DecisionMap/protocol.md)
-- [prompts/](/Users/antonbiletskiy-volokh/Downloads/Projects/DecisionMap/prompts)
-- [examples/](/Users/antonbiletskiy-volokh/Downloads/Projects/DecisionMap/examples)
+- [README.md](README.md)
+- [protocol.md](protocol.md)
+- [prompts/](prompts/)
+- [examples/](examples/)

@@ -115,7 +115,7 @@ How should NicheDesk respond over the next 12 weeks to defend retention and keep
 3. **Upmarket Pivot** (parallel experiment)
 - Useful as a controlled secondary bet for future resilience.
 
-## Working hypothesis
+## Working strategic hypothesis
 
 Use Specialization Push as the primary response, supported by targeted save offers for high-risk cohorts; run a limited upmarket pilot to test whether revenue quality can improve without overloading execution.
 
