@@ -5,227 +5,168 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/markoblogo/decision-map?style=social)](https://github.com/markoblogo/decision-map/stargazers)
 [![Last commit](https://img.shields.io/github/last-commit/markoblogo/decision-map)](https://github.com/markoblogo/decision-map/commits/main)
+[![Schema validation](https://github.com/markoblogo/decision-map/actions/workflows/validate-examples.yml/badge.svg)](https://github.com/markoblogo/decision-map/actions/workflows/validate-examples.yml)
 
-**A practical protocol for using AI to map complex business and product decisions.**
+**DecisionMap is a practical protocol for turning complex business, product, market, and marketing decisions into visible strategy maps.**
 
-DecisionMap is a protocol + prompt toolkit, not a SaaS product and not a new AI model.
+It is a protocol + prompt toolkit, not a hosted service and not a substitute for leadership judgment.
 
-It is a structured way to think through decisions where there is no single correct answer, only trade-offs under uncertainty.
+## What It Is
 
----
+Use DecisionMap when the real problem is not a lack of ideas, but a messy decision with multiple plausible paths, asymmetric risks, and uncertain external reactions.
 
-## What it is
+DecisionMap helps users:
+- restate the real decision
+- separate facts, assumptions, interpretations, and unknowns
+- generate 3-7 distinct strategic options
+- compare trade-offs, risks, resources, and breakpoints
+- pressure-test shortlisted options
+- keep an update loop alive through a cascade log
 
-DecisionMap helps you turn messy, high-stakes business, product, market, and marketing situations into a **map of strategic options**.
+The main output is a **working strategic hypothesis**, not a final truth.
 
-It is especially useful when the problem is not lack of intelligence, but a fragmented or distorted picture of reality.
+## Scope
 
-Instead of asking:
-> “What should we do?”
+DecisionMap is designed for:
+- business strategy
+- product strategy
+- market positioning
+- competitive response
+- go-to-market decisions
+- marketing strategy under uncertainty
 
-it reframes the problem as:
-> “What are our real options, and what does each of them cost?”
-
-Each option is mapped by:
-- expected upside
-- cost (money, time, reputation, risk)
-- required resources
-- likely reactions from competitors, customers, or partners
-- short / mid / long-term effects
-- assumptions
-- breakpoints (where it fails)
-- signals to monitor
-
-The core output is not a final answer.
-
-It is a **working strategic hypothesis**, with visible trade-offs.
-
----
-
-## What it is not
-
-DecisionMap is not:
-- a chatbot that gives advice
-- a prediction engine
-- a replacement for decision-makers
-- a “smart agent” that thinks for you
-
-It does not:
-- guarantee outcomes
-- remove uncertainty
-- make decisions on your behalf
-
-And it is intentionally out of scope for:
+It is intentionally out of scope for:
 - military or political conflict
 - legal or medical advice
 - financial investment decisions
-- M&A, layoffs, or HR restructuring
+- mergers and acquisitions
+- layoffs or HR restructuring
 
----
+## Quick Start
 
-## When to use it
+1. Start with [USAGE.md](USAGE.md) for the manual runbook.
+2. Use [prompts/system_prompt.md](prompts/system_prompt.md) as the runtime system/developer prompt.
+3. Run the stage prompts in order:
+   - `prompts/01_intake.md`
+   - `prompts/02_clarifying_questions.md`
+   - `prompts/03_strategy_map.md`
+   - `prompts/04_deep_dive.md`
+   - `prompts/05_decision_summary.md`
+4. If the decision continues over time, use the cascade log artifacts in `examples/`.
 
-Use DecisionMap when:
-- you have multiple plausible strategies and no clear winner
-- the decision involves trade-offs, not right vs wrong
-- competitors or external reactions matter
-- you feel stuck because the picture is unclear
+## Canonical Examples
 
----
+These are the flagship examples for v0.2.
 
-## How it differs from a normal AI chat
+- [examples/agri_commodity_market_entry.md](examples/agri_commodity_market_entry.md) - compact agri/commodities strategy map for a Ukrainian sunflower oil exporter evaluating Indian market entry.
+- [examples/fmcg_route_to_market_full_run.md](examples/fmcg_route_to_market_full_run.md) - full walkthrough for an FMCG chilled dairy brand redesigning route-to-market expansion.
+- [examples/cascade_log_agri_commodity_market_entry.md](examples/cascade_log_agri_commodity_market_entry.md) - worked update loop that continues the agri/commodities case after the first decision.
 
-Many AI chats jump from context to a clean recommendation too quickly.
+Starter generic examples are still included, but they are no longer the flagship credibility artifacts:
+- [examples/full_run_product_launch.md](examples/full_run_product_launch.md)
+- [examples/product_launch.md](examples/product_launch.md)
+- [examples/competitive_response.md](examples/competitive_response.md)
 
-DecisionMap forces a disciplined process:
-1. clarify the problem
-2. separate facts, assumptions, interpretations, and unknowns
-3. ask only questions that can change the strategy map
-4. build multiple realistic strategies
-5. compare trade-offs, resources, risks, and breakpoints
-6. pressure-test shortlisted options
-7. produce a decision record and working hypothesis
+## JSON Outputs
 
-This is slower, but better aligned with real strategic decisions.
+DecisionMap ships with normative schemas and real JSON fixtures:
 
----
+- [schemas/strategy_map.schema.json](schemas/strategy_map.schema.json)
+- [schemas/cascade_log.schema.json](schemas/cascade_log.schema.json)
+- [examples/json/strategy_map.agri_market_entry.json](examples/json/strategy_map.agri_market_entry.json)
+- [examples/json/cascade_log.agri_market_entry.json](examples/json/cascade_log.agri_market_entry.json)
 
-## Usage
+Validate the public examples with:
 
-For a full copy-paste workflow with any LLM, see [USAGE.md](USAGE.md).
+```bash
+python3 -m pip install jsonschema
+python3 scripts/validate_examples.py
+```
 
-## Quick start (manual)
+## Cascade Log
 
-You don’t need any app.
+Stage 6 is a first-class capability in v0.2, not just a note.
 
-1. Set the system prompt from `prompts/system_prompt.md`
-2. Run `01_intake.md` with your situation
-3. Answer `02_clarifying_questions.md`
-4. Generate options via `03_strategy_map.md`
-5. Deep dive with `04_deep_dive.md`
-6. Finalize with `05_decision_summary.md`
+Use it when the decision evolves over weeks or months and you need structured memory for:
+- what was decided
+- which assumptions were active
+- which signals moved
+- what happened next
+- what changed in the working hypothesis
 
-Optional: track updates using `schemas/cascade_log.schema.json`.
+Artifacts:
+- [examples/templates/cascade_log_template.md](examples/templates/cascade_log_template.md)
+- [examples/cascade_log_agri_commodity_market_entry.md](examples/cascade_log_agri_commodity_market_entry.md)
+- [examples/json/cascade_log.agri_market_entry.json](examples/json/cascade_log.agri_market_entry.json)
 
-For the full step-by-step version, use [USAGE.md](USAGE.md).
+## Document Roles
 
----
+| Artifact | Role |
+| --- | --- |
+| `README.md` | Canonical entrypoint for new users and contributors |
+| `USAGE.md` | Manual operator runbook for chat-based execution |
+| `protocol.md` | Normative spec for stages, outputs, confidence language, and cascade semantics |
+| `prompts/*` | Executable prompt assets used during a run |
+| `schemas/*` | Machine-readable shape for Stage 3 and Stage 6 outputs |
 
-## Examples
-
-- [examples/full_run_product_launch.md](examples/full_run_product_launch.md) — complete end-to-end example
-- [examples/product_launch.md](examples/product_launch.md) — compact product launch case
-- [examples/competitive_response.md](examples/competitive_response.md) — compact competitive response case
-
----
-
-## ABVX ecosystem
-
-DecisionMap can be used as a standalone protocol with any LLM.
-
-Inside the ABVX ecosystem:
-- `lab.abvx` lists it as a decision/strategy protocol artifact
-- `agentsgen` can maintain repo-local agent docs for contributors
-- `SET` can track/audit the repository as part of orchestration flows
-- `ID` can optionally provide portable user context for long-running decision work
-
-None of these integrations are required for manual use.
-
-### Integration status
-
-- `lab.abvx`: added as supporting tool in **Decision & Strategy Protocols** (repo + landing card).
-- `SET`: added as registry entry for tracking/audit (`repo-docs` baseline only; no runtime orchestration).
-- `ID`: added as optional reference/link integration (no hard dependency).
-- `agentsgen`: repo-local docs generated (`AGENTS.md`, `RUNBOOK.md`, `.agentsgen.json`).
-
-## Optional ABVX integration
-
-- `DecisionMap` stays standalone and usable with any LLM.
-- `ID` is an optional context layer, not a dependency.
-- `SET` should track and audit this repo, but not run runtime orchestration yet.
-- `agentsgen` is the preferred path for repo-local agent-facing docs (`AGENTS.md`, `RUNBOOK.md`, `.agentsgen.json`).
-- `lab.abvx` should position DecisionMap as a supporting tool in **Decision & Strategy Protocols**, not as core stack infrastructure.
-
----
-
-## What is included in v0.1
-
-- protocol
-- reusable prompts
-- JSON schemas
-- manual usage workflow
-- example cases
-- Codex notes for a future mini-tool
-
-## What is not included yet
-
-- web app
-- hosted service
-- authentication
-- persistent project memory
-- LLM integration
-- local model runner
-
----
-
-## Repository structure
+## Repository Structure
 
 ```text
 decision-map/
 ├── README.md
 ├── USAGE.md
 ├── protocol.md
+├── CONTRIBUTING.md
+├── CHANGELOG.md
 ├── prompts/
-│   ├── system_prompt.md
-│   ├── 01_intake.md
-│   ├── 02_clarifying_questions.md
-│   ├── 03_strategy_map.md
-│   ├── 04_deep_dive.md
-│   └── 05_decision_summary.md
 ├── schemas/
-│   ├── strategy_map.schema.json
-│   └── cascade_log.schema.json
 ├── examples/
-│   ├── full_run_product_launch.md
-│   ├── product_launch.md
-│   └── competitive_response.md
-├── codex/
-│   ├── build_prompt.md
-│   └── implementation_notes.md
-├── LICENSE
-└── .gitignore
+│   ├── json/
+│   └── templates/
+├── scripts/
+└── .github/
 ```
 
----
+## Contributing
+
+The repo now has a lightweight open-source contribution layer:
+- [CONTRIBUTING.md](CONTRIBUTING.md)
+- `.github/ISSUE_TEMPLATE/`
+- [CHANGELOG.md](CHANGELOG.md)
+
+Contributions are especially useful for:
+- stronger real-world examples
+- protocol clarity improvements
+- schema/example consistency
+- better manual operator guidance
+
+## Roadmap
+
+Roadmap is intentionally lightweight in-repo. Use GitHub Issues/Milestones for active work and prioritization.
+
+Current v0.2 direction:
+- canonical real-world examples
+- validated JSON fixtures
+- stronger cascade-log workflow
+- clearer contributor ergonomics
+
+## ABVX Ecosystem
+
+DecisionMap remains standalone and usable with any LLM.
+
+Inside the ABVX ecosystem:
+- `lab.abvx` can list it as a decision/strategy protocol artifact
+- `agentsgen` can maintain repo-local agent docs for contributors
+- `SET` can track or audit the repo
+- `ID` can optionally provide portable user context for longer-running decision work
+
+None of these integrations are required for manual use.
 
 ## Privacy
 
-DecisionMap does not require storing data.
-
-However:
-- most hosted LLM APIs process data externally
-- your input may be processed by third-party providers
+DecisionMap itself does not require storing data, but hosted LLM APIs may process your input externally.
 
 For sensitive work:
-- anonymize names, companies, exact financials, customer data, and internal documents
-- or run in a local model / approved internal environment
-
----
-
-## Future direction (optional)
-
-Future versions may include:
-- project mode
-- cascade logs for long-running decisions
-- structured memory of decisions, assumptions, signals, outcomes, and revisions
-
-But the core value is already here:
-- options, not answers
-- working hypothesis, not final truth
-- clarity under uncertainty
-
----
-
-## Version
-
-Current status: v0.1 protocol draft.
+- anonymize names, companies, exact numbers, and internal documents
+- remove customer data and personal data
+- use a local model or approved internal environment when needed

@@ -1,0 +1,247 @@
+{
+  "project": {
+    "name": "DniproSun India market entry",
+    "owner": "Export Director",
+    "domain": "edible oils / agri commodities",
+    "created_at": "2026-03-10T09:00:00Z",
+    "description": "Phased India entry for sunflower oil under freight, FX, and channel uncertainty",
+    "mode": "project"
+  },
+  "parties": [
+    {
+      "id": "party-1",
+      "name": "DniproSun Foods",
+      "role": "exporter / decision owner",
+      "incentives": [
+        "Grow export mix",
+        "Protect margin floor",
+        "Limit receivables risk"
+      ],
+      "likely_reaction": "Continue disciplined expansion only if economics remain above threshold"
+    },
+    {
+      "id": "party-2",
+      "name": "GulfEast Distributors",
+      "role": "India food-service distributor",
+      "incentives": [
+        "Secure reliable imported sunflower supply",
+        "Negotiate longer payment terms",
+        "Win volume-based rebates"
+      ],
+      "likely_reaction": "Push for looser credit terms after first successful orders"
+    },
+    {
+      "id": "party-3",
+      "name": "Regional private-label retailer",
+      "role": "alternative channel partner",
+      "incentives": [
+        "Lock a margin-positive private-label supply line",
+        "Gain preferential access if demand proves stable"
+      ],
+      "likely_reaction": "Request exclusivity if early category movement looks promising"
+    }
+  ],
+  "decision_versions": [
+    {
+      "version": "v1",
+      "date": "2026-03-10T09:00:00Z",
+      "decision_statement": "Enter India in the next 6 months without breaking the 8% gross margin floor.",
+      "chosen_strategy": "Food-service distributor wedge with strict receivables guardrails",
+      "rejected_or_deferred_options": [
+        "Premium Urban Retail Launch",
+        "Private Label Entry Through Regional Retailer",
+        "Wait-and-Watch With Distributor Trials Only"
+      ],
+      "accepted_tradeoffs": [
+        "Lower early brand visibility in exchange for faster operational learning"
+      ],
+      "confidence": {
+        "level": "Medium",
+        "rationale": "Best initial fit with current resources, but channel economics depend on collections and commodity pricing."
+      },
+      "revisit_triggers": [
+        "Collection cycle exceeds 95 days",
+        "Landed margin falls below 8%",
+        "Distributor reorder missing after first trial shipments"
+      ],
+      "what_changed_since_last_version": "Initial version"
+    },
+    {
+      "version": "v2",
+      "date": "2026-05-02T10:30:00Z",
+      "decision_statement": "Continue India entry only if repeat demand stays ahead of credit and margin risk.",
+      "chosen_strategy": "Continue food-service wedge, freeze volume expansion if DSO breaches risk policy, keep private-label as a hedge",
+      "rejected_or_deferred_options": [
+        "Immediate premium retail launch"
+      ],
+      "accepted_tradeoffs": [
+        "Slower volume ramp in exchange for tighter credit discipline"
+      ],
+      "confidence": {
+        "level": "Medium",
+        "rationale": "Early demand validated the wedge, but receivables pressure increased."
+      },
+      "revisit_triggers": [
+        "DSO exceeds 95 days",
+        "Private-label margin exceeds food-service margin by more than 1.5 points with acceptable control terms"
+      ],
+      "what_changed_since_last_version": "Repeat order arrived faster than expected, but the distributor requested 105-day terms."
+    }
+  ],
+  "decisions": [
+    {
+      "id": "decision-1",
+      "title": "India entry channel choice",
+      "status": "active",
+      "working_strategy": "Food-service distributor wedge with a private-label fallback",
+      "rejected_options": [
+        "Premium Urban Retail Launch",
+        "Broad wait-and-watch"
+      ],
+      "confidence": {
+        "level": "Medium",
+        "rationale": "Operational fit is good, but financial guardrails remain active."
+      },
+      "revisit_triggers": [
+        "DSO > 95 days",
+        "Gross margin < 8%"
+      ],
+      "timestamp": "2026-05-02T10:30:00Z"
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "a-1",
+      "statement": "Institutional buyers value supply reliability enough to pay a sunflower premium.",
+      "confidence": {
+        "level": "Medium",
+        "rationale": "Supported by buyer interviews and initial reorders."
+      },
+      "status": "validated",
+      "evidence": [
+        "First reorder arrived within 41 days",
+        "Distributor feedback cited reliability as a buying reason"
+      ]
+    },
+    {
+      "id": "a-2",
+      "statement": "First distributor can convert trial volume into repeat demand within 8 weeks.",
+      "confidence": {
+        "level": "Medium",
+        "rationale": "Validated once, but still needs repetition across accounts."
+      },
+      "status": "validated",
+      "evidence": [
+        "Repeat purchase order arrived after first shipment cycle"
+      ]
+    },
+    {
+      "id": "a-3",
+      "statement": "Landed margin can stay above 8% if FX remains within the planning band.",
+      "confidence": {
+        "level": "Low",
+        "rationale": "The first cycle held, but commodity and FX volatility remain meaningful."
+      },
+      "status": "active",
+      "evidence": [
+        "First-cycle landed margin was 9.1%"
+      ]
+    }
+  ],
+  "signals": [
+    {
+      "id": "s-1",
+      "name": "Gross margin after logistics",
+      "metric": "Blended shipped margin",
+      "direction": "stable",
+      "threshold": ">=8%",
+      "source": "Internal finance model",
+      "related_revisit_triggers": [
+        "Landed margin falls below 8%"
+      ]
+    },
+    {
+      "id": "s-2",
+      "name": "Receivables cycle",
+      "metric": "Days sales outstanding",
+      "direction": "mixed",
+      "threshold": "<=95 days",
+      "source": "Distributor aging report",
+      "related_revisit_triggers": [
+        "Collection cycle exceeds 95 days"
+      ]
+    },
+    {
+      "id": "s-3",
+      "name": "Reorder velocity",
+      "metric": "Days from first shipment to repeat purchase order",
+      "direction": "up",
+      "threshold": "<=56 days",
+      "source": "Distributor sales report",
+      "related_revisit_triggers": [
+        "Distributor reorder missing after first trial shipments"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "act-1",
+      "description": "Finalize first distributor contract with collection guardrails",
+      "owner": "Export Director",
+      "status": "done",
+      "due_date": "2026-03-24"
+    },
+    {
+      "id": "act-2",
+      "description": "Ship first trial container of 15L food-service packs",
+      "owner": "Supply Lead",
+      "status": "done",
+      "due_date": "2026-04-02",
+      "depends_on": [
+        "act-1"
+      ]
+    },
+    {
+      "id": "act-3",
+      "description": "Open private-label fallback conversation with one regional retailer",
+      "owner": "Commercial Manager",
+      "status": "in_progress",
+      "due_date": "2026-04-20",
+      "depends_on": [
+        "act-1"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "out-1",
+      "summary": "First trial shipment cleared on time with no customs exception.",
+      "impact": "positive",
+      "recorded_at": "2026-04-04T16:00:00Z",
+      "related_decision_version": "v1"
+    },
+    {
+      "id": "out-2",
+      "summary": "Initial sell-through in institutional kitchens outperformed the distributor forecast by 18%.",
+      "impact": "positive",
+      "recorded_at": "2026-04-29T18:00:00Z",
+      "related_decision_version": "v1"
+    }
+  ],
+  "updates": [
+    {
+      "id": "u1",
+      "timestamp": "2026-05-02T10:30:00Z",
+      "change_summary": "Demand signal improved, but the distributor pushed for longer payment terms.",
+      "decision_refs": [
+        "decision-1"
+      ],
+      "what_changed_since_last_version": "Repeat purchase order arrived after 41 days; landed margin remained above target; the distributor requested 105-day terms for the second cycle.",
+      "revisit_triggers": [
+        "Freeze volume expansion if DSO exceeds 95 days",
+        "Reopen channel prioritization if private-label economics exceed food-service economics by more than 1.5 margin points"
+      ],
+      "next_review_at": "2026-05-24T09:00:00Z"
+    }
+  ]
+}

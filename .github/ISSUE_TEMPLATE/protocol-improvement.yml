@@ -1,0 +1,27 @@
+name: Protocol improvement
+description: Suggest a protocol, prompt, or stage-logic improvement.
+title: "[Protocol]: "
+labels:
+  - protocol
+body:
+  - type: textarea
+    id: current
+    attributes:
+      label: Current behavior
+      description: What part of the protocol, prompt flow, or stage logic is weak or unclear?
+    validations:
+      required: true
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Proposed improvement
+      description: Describe the desired change precisely.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Why it matters
+      description: How would this improve decision quality, clarity, or operator usability?
+    validations:
+      required: true

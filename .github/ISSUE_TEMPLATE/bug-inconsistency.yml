@@ -1,0 +1,25 @@
+name: Bug or inconsistency
+description: Report a mismatch across docs, prompts, examples, or schemas.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: textarea
+    id: issue
+    attributes:
+      label: What is inconsistent or broken?
+      description: Point to the file, prompt, example, or schema and describe the mismatch.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect instead?
+      description: Describe the intended behavior or wording.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction or evidence
+      description: Include links, commands, or a short example if relevant.

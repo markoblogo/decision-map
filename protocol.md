@@ -1,25 +1,20 @@
 # DecisionMap Protocol
 
-DecisionMap is a practical protocol for using LLMs as structured facilitators for complex business, product, market, and marketing decisions.
+DecisionMap is a structured facilitation protocol for complex business, product, market, and marketing decisions under uncertainty.
 
-It is built for situations where there is no single correct answer. There are only options, trade-offs, limited resources, uncertain reactions, and consequences over time.
+This file is the normative specification for:
+- scope boundaries
+- stage sequence
+- required output shapes
+- confidence language
+- Stage 6 cascade-log semantics
 
-The goal is not to make the AI “decide”.
-
-The goal is to help the user see:
-- what the real options are
-- what each option costs
-- what assumptions each option depends on
-- where each option can break
-- what should be watched after the decision is made
-
-The final output is a **working strategic hypothesis**, not a final truth.
-
----
+For repository overview and examples, use [README.md](README.md).  
+For manual execution, use [USAGE.md](USAGE.md).
 
 ## Scope
 
-DecisionMap is designed for:
+### In scope
 
 - business strategy
 - product strategy
@@ -28,7 +23,7 @@ DecisionMap is designed for:
 - go-to-market decisions
 - marketing strategy under uncertainty
 
-It is not designed for:
+### Out of scope
 
 - military conflict
 - political conflict
@@ -38,395 +33,311 @@ It is not designed for:
 - mergers and acquisitions
 - layoffs or HR restructuring
 
-If the decision is outside the scope, the facilitator should stop and clearly explain the boundary.
+If a request is out of scope, the facilitator must stop and state the boundary clearly.
 
----
+## Operating Principles
 
-## Core principles
+### 1. Options before answers
 
-### 1. Options, not answers
+DecisionMap must not collapse the situation into one polished recommendation too early.
 
-DecisionMap should not collapse the situation into one confident recommendation too early.
+The first major output is a map of realistic options.
 
-The first real output must be a map of possible strategies.
+### 2. Facts, assumptions, interpretations, unknowns
 
-Each strategy should be treated as a path with:
-- possible upside
-- price
-- resource requirements
-- risks
-- likely reactions
-- time effects
-- assumptions
-- breakpoints
+Important claims must be separated into:
+- **Fact**
+- **Assumption**
+- **Interpretation**
+- **Unknown**
 
----
+The facilitator must not hide assumptions inside confident language.
 
-### 2. Reality before elegance
+### 3. Reality before elegance
 
-A strategy is not useful because it sounds smart.
-
-It is useful only if it can survive contact with:
+An option is only useful if it survives contact with:
 - available resources
 - time pressure
-- competitors
-- customer behavior
 - market conditions
+- customer behavior
+- competitor reactions
 - internal constraints
 
-If a strategy requires resources the user does not have, this must be made explicit.
+### 4. Human decision ownership
 
----
+DecisionMap structures judgment. It does not replace judgment.
 
-### 3. The user may not know the full truth
+### 5. Confidence language
 
-DecisionMap assumes that the user’s initial description may be incomplete, biased, emotional, or strategically distorted.
+All strategy confidence must use:
+- `Low`
+- `Medium`
+- `High`
 
-This is normal.
+Numeric confidence scoring is out of spec.
 
-The facilitator should not attack the user.  
-It should help reconstruct the situation through structured questions and visible assumptions.
+## Stage Sequence
 
----
+Follow this sequence unless the user already provides an artifact from a later stage:
 
-### 4. Facts, assumptions, and interpretations must be separated
+1. Scope check
+2. Intake
+3. Clarifying questions
+4. First strategy map
+5. Strategy selection and deep dive
+6. Decision summary
+7. Cascade log update loop
 
-Every important claim should be labeled as one of:
-
-- **Fact**: provided or reasonably verifiable information
-- **Assumption**: something being treated as true for now
-- **Interpretation**: a reading of motives, incentives, risks, or market behavior
-
-The facilitator must never hide assumptions inside confident language.
-
----
-
-### 5. No final strategy before enough context
-
-If the context is too thin, DecisionMap should not produce a final recommendation.
-
-Instead, it should say:
-
-- what is missing
-- why it matters
-- what questions must be answered next
-
-The system may provide a provisional map, but it must clearly mark it as low-confidence.
-
----
-
-### 6. The decision remains human
-
-DecisionMap does not replace judgment.
-
-It structures the decision, shows trade-offs, and makes uncertainty visible.
-
-The user remains responsible for the final choice.
-
----
-
-## Stage 0: Scope check
+## Stage 0: Scope Check
 
 ### Purpose
 
-Confirm that the decision belongs inside the DecisionMap scope and is clear enough to begin.
+Confirm that the problem belongs inside the protocol and is concrete enough to begin.
 
-### Input
+### Required output
 
-The user provides a short description of the situation, ideally in one or two paragraphs.
-
-### The facilitator checks
-
-- Is this a business, product, market, or marketing decision?
-- Is there a real decision to be made?
-- Who is the decision owner?
-- What is the current pressure?
-- Are there multiple plausible paths?
-
-### Output
-
-The facilitator returns:
-
-- scope result: in scope / partially in scope / out of scope
+- scope result: `in scope`, `partially in scope`, or `out of scope`
 - rewritten decision statement
 - decision owner
 - primary objective
 - obvious constraints
-- what cannot be answered yet
+- unresolved blockers
 
-### Gate to proceed
+### Gate
 
 Proceed only if:
-
 - the decision is in scope
-- there is a real choice between options
-- the decision owner and rough objective are identifiable
-
----
+- there is a real choice between plausible paths
+- the owner and objective are identifiable
 
 ## Stage 1: Intake
 
 ### Purpose
 
-Collect the baseline map of the situation before asking for strategy.
+Create the first usable map of the decision context.
 
-### Capture
+### Required intake areas
 
-- business context
-- product or service context
+- business, product, or market context
+- decision pressure
 - target customers or market segment
-- competitors or relevant external players
-- current pressure: revenue, churn, launch window, growth, positioning, timing
-- available resources: budget, team, distribution, brand, data, relationships, expertise
-- hard constraints: time, legal, technical, reputational, operational
-- known data sources: metrics, research, user feedback, internal docs, market signals
+- relevant competitors or other parties
+- available resources
+- hard constraints
+- evidence already available
 
-### Output
-
-The facilitator produces:
+### Required output
 
 - structured situation summary
 - known facts
-- assumptions already being made
-- interpretations that may be biased
-- obvious unknowns
-- first read on what kind of decision this is
+- assumptions
+- interpretations
+- major unknowns
+- initial framing confidence: `Low`, `Medium`, or `High`
 
-The facilitator should not yet give a final strategy.
+### Gate
 
----
+Do not generate strategy recommendations during intake.
 
-## Stage 2: Clarifying questions
+## Stage 2: Clarifying Questions
 
 ### Purpose
 
-Reduce ambiguity before generating the first strategy map.
+Reduce ambiguity before generating the first option map.
 
-The goal is not to ask every possible question.  
-The goal is to ask the questions that most change the decision.
+### Question rule
 
-### Question areas
+Ask only questions that can materially change:
+- which strategies are realistic
+- which strategies are too risky
+- which strategies fit the real objective
+- which assumptions are unsafe
 
-The facilitator asks about:
+### Required output
 
-- the real goal behind the decision
-- what success would look like
-- what failure would look like
-- time horizon: short / medium / long
-- available budget, team, capabilities, distribution, credibility
-- non-negotiable constraints
-- what the user is willing to sacrifice
-- what the user is not willing to sacrifice
-- other parties: competitors, partners, customers, platforms, regulators, internal stakeholders
-- likely incentives and reactions of those parties
-- current market conditions
-- biggest risks
-- biggest unknowns
-
-### Output
-
-The facilitator returns:
-
-- answered question summary
+- answered-question summary
 - unresolved unknowns
-- assumptions confirmed by the user
-- assumptions still unconfirmed
-- confidence in the problem framing: Low / Medium / High
+- confirmed assumptions
+- unconfirmed assumptions
+- framing confidence
 
-### Gate to proceed
+### Gate
 
-Proceed to the first strategy map only when there is enough information to create several realistic options.
+Proceed only when the context is sufficient to create several distinct options.  
+If not, stop and request the missing inputs.
 
-If not, stop and ask for the missing inputs.
-
----
-
-## Stage 3: First strategy map
+## Stage 3: First Strategy Map
 
 ### Purpose
 
-Generate a first map of possible strategies.
+Generate the first comparable set of realistic strategies.
 
-This is the core output of DecisionMap.
+### Option count
 
-The map should include 3–7 strategically different options.  
-They should not be cosmetic variations of the same idea.
+The map must include `3-7` strategically distinct options.
 
-### For each option include
+### Required pre-map restatement
 
-- **Name**
-- **Short summary**
-- **Expected upside**
-- **Price / cost**
+- decision statement
+- known facts
+- key assumptions
+- major unknowns
+- framing confidence
+
+### Required fields for each option
+
+- name
+- short summary
+- expected upside
+- price/cost:
   - money
   - time
   - reputation
   - opportunity cost
   - operational complexity
-- **Required resources**
-- **Key risks**
-- **Likely reaction**
+  - customer trust
+  - strategic flexibility lost
+- required resources
+- key risks
+- likely reactions:
   - competitors
   - customers
   - partners
   - internal stakeholders
-- **Time effects**
+- time effects:
   - short-term
   - medium-term
   - long-term
-- **Core assumptions**
-- **Breakpoints**
-  - what would make this option invalid
-- **Signals to monitor**
-  - what would show that this option is working or failing
-- **Confidence level**
-  - Low / Medium / High
+- core assumptions
+- breakpoints
+- signals to monitor
+- confidence with rationale
 
-### Output
+### Required map-level output
 
-The facilitator produces a comparable strategy map, preferably as cards or a table.
+- key trade-offs
+- dominant uncertainties
+- suggested shortlist
+- best current working hypothesis
+- what would change this view
 
-The map may include a ranking by fit to the user’s stated goals, but it must not present that ranking as objective truth.
+### Canonical machine-readable form
 
----
+If rendered as JSON, the output must satisfy [schemas/strategy_map.schema.json](schemas/strategy_map.schema.json).
 
-## Stage 4: Strategy selection and deep dive
+## Stage 4: Strategy Selection and Deep Dive
 
 ### Purpose
 
-Help the user choose which options deserve deeper analysis.
+Pressure-test the shortlisted options instead of accepting them at face value.
 
-The user selects one to three options from the first strategy map.
-
-The facilitator may ask one or two additional questions if the selection reveals unclear priorities.
-
-For example:
-
-- “You selected the fastest option and the safest option. Which matters more right now: speed or downside protection?”
-- “You rejected the highest-upside option. Is that because of resource limits, risk, or values?”
-
-### For each selected option analyze
+### Required analysis for each selected option
 
 - strategic logic
-- why this option could work
-- why it could fail
-- execution steps
-- required resources
-- dependencies
-- weak points
+- what must be true
+- execution path
+- resource fit
+- main risks
+- invalidators
 - first tests or experiments
-- what must be true for this to work
-- what would make this strategy invalid
+- updated confidence
 
-### Output
+### Required comparative dimensions when multiple options remain
 
-The facilitator produces:
+- upside
+- downside risk
+- resource fit
+- speed
+- reversibility
+- learning value
+- strategic flexibility
 
-- deep-dive analysis for selected options
-- updated confidence levels
-- unresolved concerns
-- recommended first test or next move for each option
-
----
-
-## Stage 5: Decision summary
+## Stage 5: Decision Summary
 
 ### Purpose
 
-Produce a decision-ready output that makes trade-offs explicit.
+Produce the best current working strategy while keeping trade-offs visible.
 
-This is not “the correct answer”.
-
-It is the best working strategy based on current information.
-
-### Include
+### Required output
 
 - chosen working strategy
 - why it was chosen
-- rejected options and why
-- trade-offs accepted
-- resources required
-- assumptions behind the choice
+- rejected or deferred options and why
+- accepted trade-offs
+- required resources
+- active assumptions
 - unresolved uncertainties
 - immediate next actions
 - signals to monitor
-- revisit trigger or date
+- revisit trigger or review date
+- a `what would change this view` section
 
-### Output
+## Stage 6: Cascade Log Update Loop
 
-The facilitator produces:
-
-- working strategic hypothesis
-- immediate action plan
-- monitoring plan
-- “what would change this view” section
-
----
-
-## Stage 6: Optional update loop / cascade log
+Stage 6 is part of the DecisionMap protocol for long-running decisions.
 
 ### Purpose
 
-Keep the decision map alive as reality changes.
+Keep strategic memory alive when reality changes after the initial decision.
 
-Some decisions end after one session.  
-Others are part of an ongoing strategic game.
+### Use when
 
-In the project / premium mode, DecisionMap can maintain a cascade log: a structured memory of what was decided, why, what assumptions were used, what happened next, and what changed.
+- a competitor move changes the landscape
+- customer feedback invalidates a prior assumption
+- market or channel conditions shift
+- internal constraints change
+- the team revisits the same strategic choice on a regular cadence
 
-### Update cadence
+### Required update inputs
 
-The map can be updated:
+- latest decision version or decision summary
+- what happened since the last version
+- new facts
+- assumptions confirmed or invalidated
+- signal movement
+- outcomes observed
+- whether the current working strategy remains valid
 
-- after a competitor move
-- after customer feedback
-- after new market data
-- after an internal constraint changes
-- weekly, monthly, or quarterly
+### Required update questions
 
-### At each update
+At each update the facilitator must ask:
+- what happened since the last decision?
+- which assumptions held?
+- which assumptions broke?
+- which signals moved?
+- did other parties react as expected?
+- are the shortlisted options still valid?
+- should the team continue, adapt, or pivot?
 
-The facilitator should ask:
+### Required update outputs
 
-- What happened since the last decision?
-- Which assumptions were confirmed?
-- Which assumptions were broken?
-- Which signals changed?
-- Did the other parties react as expected?
-- Are the current options still valid?
-- Should we continue, adapt, or pivot?
-
-### Output
-
-Each update produces:
-
-- cascade log entry
+Each update must produce:
 - updated facts
 - updated assumptions
 - updated strategy confidence
-- revised breakpoints
+- updated breakpoints or revisit triggers
 - next working hypothesis version
+- cascade log entry
 
----
+### Cascade log minimum sections
 
-## Recommended facilitator behavior
+- project metadata
+- parties
+- decision versions
+- assumptions
+- signals
+- actions
+- outcomes
+- update entries
 
-The facilitator should:
+### Canonical machine-readable form
 
-- be practical
-- be explicit when confidence is low
-- prefer clarity over impressive language
-- avoid polished certainty
-- ask uncomfortable but useful questions
-- state what data would improve the decision
-- keep options comparable
-- make costs visible
-- help the user see trade-offs, not escape them
+If rendered as JSON, the output must satisfy [schemas/cascade_log.schema.json](schemas/cascade_log.schema.json).
 
-The facilitator should not:
+## Reference Artifacts
 
-- flatter the user
-- hide uncertainty
-- turn weak data into strong conclusions
-- give one clean answer too early
-- pretend that a strategy is realistic if required resources are missing
+- Cascade template: [examples/templates/cascade_log_template.md](examples/templates/cascade_log_template.md)
+- Worked cascade example: [examples/cascade_log_agri_commodity_market_entry.md](examples/cascade_log_agri_commodity_market_entry.md)
+- JSON fixtures:
+  - [examples/json/strategy_map.agri_market_entry.json](examples/json/strategy_map.agri_market_entry.json)
+  - [examples/json/cascade_log.agri_market_entry.json](examples/json/cascade_log.agri_market_entry.json)

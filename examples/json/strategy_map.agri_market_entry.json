@@ -1,0 +1,366 @@
+{
+  "decision_statement": "Should DniproSun enter India in the next 6 months, and if so through which market-entry strategy, given limited commercial capacity, freight volatility, and margin pressure from competing edible oils?",
+  "known_facts": [
+    "DniproSun has annual export capacity for 42000 additional tons without capex.",
+    "Management allocated a maximum first-phase commercial budget of 1.4 million USD.",
+    "The company has no local legal entity in India and no in-market sales team.",
+    "Two regional distributors are interested, but both want 75-90 day payment terms and launch support.",
+    "Gross margin floor for a new market program is 8% after logistics and trade spend."
+  ],
+  "key_assumptions": [
+    "Urban retail buyers will pay a small premium for stable quality and food-safety credentials.",
+    "Food-service distribution may scale faster than retail if the company accepts lower early brand visibility.",
+    "Import duty or FX movement could erase the margin advantage within one quarter."
+  ],
+  "major_unknowns": [
+    "Whether sunflower oil premium positioning is defendable if palm prices decline further.",
+    "How much trade marketing support distributors truly need for a 6-month launch.",
+    "Which channel reaches reorder velocity fastest: retail shelves, food-service, or private label."
+  ],
+  "framing_confidence": {
+    "level": "Medium",
+    "rationale": "The market-entry problem is concrete and resource-bound, but price-substitution and channel economics remain uncertain."
+  },
+  "options": [
+    {
+      "name": "Premium Urban Retail Launch",
+      "summary": "Enter via premium retail chains and e-commerce grocery in 6 metro areas with branded 1L and 5L packs.",
+      "expected_upside": "Builds long-term brand equity and better unit margin if premium positioning holds.",
+      "price_cost": {
+        "money": "High trade marketing and listing fees.",
+        "time": "Medium to high due to retailer onboarding and activation.",
+        "reputation": "Medium upside if quality lands well, downside if shelf turnover is weak.",
+        "opportunity_cost": "Delays food-service scale learning.",
+        "operational_complexity": "High.",
+        "customer_trust": "Potentially strong if certifications and origin story matter.",
+        "strategic_flexibility_lost": "Medium because focus narrows adjacent experiments."
+      },
+      "required_resources": [
+        {
+          "resource": "Local importer or distributor with modern-trade relationships",
+          "status": "partially_available",
+          "notes": "Interest exists but economics are not finalized."
+        },
+        {
+          "resource": "Retail activation budget",
+          "status": "available"
+        }
+      ],
+      "key_risks": [
+        {
+          "risk": "Slow shelf rotation",
+          "likelihood": "Medium",
+          "severity": "High",
+          "early_warning_signal": "No reorder from top chains by week 10",
+          "mitigation": "Tight city-level pilot and weekly sell-through review"
+        }
+      ],
+      "likely_reactions": [
+        {
+          "party": "Retail buyers",
+          "expected_reaction": "Demand more launch support and promotions than initially budgeted",
+          "assumption_label": "Interpretation"
+        },
+        {
+          "party": "Commodity competitors",
+          "expected_reaction": "Respond through discounting instead of brand-building",
+          "assumption_label": "Interpretation"
+        }
+      ],
+      "time_effects": {
+        "short_term": "Slow sell-in and expensive launch setup.",
+        "medium_term": "Potential case for premium positioning if repeat appears.",
+        "long_term": "Can create a stronger own-brand moat."
+      },
+      "core_assumptions": {
+        "user_side": [
+          "Urban consumers value quality and traceability enough to offset a higher price."
+        ],
+        "market_side": [
+          "Premium grocery channels can sustain a sunflower price premium."
+        ],
+        "other_parties_side": [
+          "Distributors will support the launch without demanding margin-breaking terms."
+        ]
+      },
+      "breakpoints": [
+        "Weighted average gross margin falls below 8%.",
+        "No reorder from top 3 chains after 10 weeks."
+      ],
+      "signals_to_monitor": [
+        "Shelf rotation by city",
+        "Trade-spend per reorder",
+        "Gross margin after rebates",
+        "Repeat order cadence"
+      ],
+      "confidence": {
+        "level": "Low",
+        "rationale": "Retail upside is real, but launch economics and premium defensibility are fragile."
+      }
+    },
+    {
+      "name": "Food-Service Distributor Wedge",
+      "summary": "Launch first through hotel, restaurant, and institutional food-service distributors using bulk and 15L packs.",
+      "expected_upside": "Faster volume learning with fewer SKU and retail activation complexities.",
+      "price_cost": {
+        "money": "Medium.",
+        "time": "Medium.",
+        "reputation": "Low to medium.",
+        "opportunity_cost": "Slower retail brand recognition.",
+        "operational_complexity": "Medium.",
+        "customer_trust": "Relationship-led rather than consumer-brand-led.",
+        "strategic_flexibility_lost": "Low."
+      },
+      "required_resources": [
+        {
+          "resource": "B2B distributor contracts",
+          "status": "partially_available"
+        },
+        {
+          "resource": "Credit control discipline",
+          "status": "available"
+        }
+      ],
+      "key_risks": [
+        {
+          "risk": "Receivables exposure from long payment terms",
+          "likelihood": "Medium",
+          "severity": "High",
+          "early_warning_signal": "DSO trending above 95 days",
+          "mitigation": "Volume guardrails tied to collections"
+        }
+      ],
+      "likely_reactions": [
+        {
+          "party": "Institutional buyers",
+          "expected_reaction": "Prioritize supply reliability and quality consistency",
+          "assumption_label": "Assumption"
+        },
+        {
+          "party": "Incumbent suppliers",
+          "expected_reaction": "Offer tactical commercial concessions to keep accounts",
+          "assumption_label": "Interpretation"
+        }
+      ],
+      "time_effects": {
+        "short_term": "Faster shipment velocity than retail.",
+        "medium_term": "Can lock in procurement relationships if execution is reliable.",
+        "long_term": "Creates weaker consumer brand assets than retail."
+      },
+      "core_assumptions": {
+        "user_side": [
+          "Procurement buyers will accept a moderate premium for reliable supply."
+        ],
+        "market_side": [
+          "Food-service demand is less promotion-heavy than branded retail."
+        ],
+        "other_parties_side": [
+          "Distributors will reorder if the first shipment performs operationally."
+        ]
+      },
+      "breakpoints": [
+        "Net collection cycle exceeds 95 days.",
+        "First two distributors fail to convert trial volume into repeat purchase."
+      ],
+      "signals_to_monitor": [
+        "Reorder interval",
+        "Realized margin by pack size",
+        "Overdue receivables",
+        "Distributor forecast accuracy"
+      ],
+      "confidence": {
+        "level": "Medium",
+        "rationale": "Best balance of speed and complexity, but credit discipline is critical."
+      }
+    },
+    {
+      "name": "Private Label Entry Through Regional Retailer",
+      "summary": "Enter India under retailer-owned branding to win early volume with lower customer-acquisition cost.",
+      "expected_upside": "Simpler path to volume and lower marketing spend.",
+      "price_cost": {
+        "money": "Medium.",
+        "time": "Medium.",
+        "reputation": "Low external visibility.",
+        "opportunity_cost": "No own-brand equity creation.",
+        "operational_complexity": "Medium to high.",
+        "customer_trust": "Depends on retailer brand, not DniproSun.",
+        "strategic_flexibility_lost": "High once capacity is tied to private label."
+      },
+      "required_resources": [
+        {
+          "resource": "Retailer negotiation capability",
+          "status": "partially_available"
+        },
+        {
+          "resource": "Packaging compliance readiness",
+          "status": "available"
+        }
+      ],
+      "key_risks": [
+        {
+          "risk": "Retailer bargaining power compresses margin",
+          "likelihood": "High",
+          "severity": "High",
+          "early_warning_signal": "Margin requests rise after first supply cycle",
+          "mitigation": "Hard floor in commercial terms and no exclusivity without return math"
+        }
+      ],
+      "likely_reactions": [
+        {
+          "party": "Regional retailer",
+          "expected_reaction": "Push for stronger exclusivity once early supply proves reliable",
+          "assumption_label": "Interpretation"
+        }
+      ],
+      "time_effects": {
+        "short_term": "Can create fast initial volume if the account signs.",
+        "medium_term": "Dependence on one account rises.",
+        "long_term": "Strategic differentiation remains limited."
+      },
+      "core_assumptions": {
+        "user_side": [
+          "Management is willing to accept weaker own-brand visibility."
+        ],
+        "market_side": [
+          "Retailers will accept Ukrainian origin if landed economics are attractive."
+        ],
+        "other_parties_side": [
+          "The retailer will not require prohibitive exclusivity before proving demand."
+        ]
+      },
+      "breakpoints": [
+        "Exclusive terms restrict future branded entry.",
+        "Contribution margin drops below hurdle after first quarter."
+      ],
+      "signals_to_monitor": [
+        "Account concentration",
+        "Margin after deductions",
+        "Service-level penalties",
+        "Renewal leverage"
+      ],
+      "confidence": {
+        "level": "Medium",
+        "rationale": "Volume case is plausible, but strategic control loss is real."
+      }
+    },
+    {
+      "name": "Wait-and-Watch With Distributor Trials Only",
+      "summary": "Delay a full market launch, run only limited commercial trials while monitoring duty, FX, and competitor price moves.",
+      "expected_upside": "Preserves capital and reduces timing risk.",
+      "price_cost": {
+        "money": "Low.",
+        "time": "Low to medium.",
+        "reputation": "Low.",
+        "opportunity_cost": "May miss the current distributor window and lose market learning time.",
+        "operational_complexity": "Low.",
+        "customer_trust": "Neutral.",
+        "strategic_flexibility_lost": "Low."
+      },
+      "required_resources": [
+        {
+          "resource": "Small trial inventory",
+          "status": "available"
+        },
+        {
+          "resource": "Monitoring cadence with distributors",
+          "status": "available"
+        }
+      ],
+      "key_risks": [
+        {
+          "risk": "Paralysis and lost learning",
+          "likelihood": "Medium",
+          "severity": "Medium",
+          "early_warning_signal": "Trial partners deprioritize the company",
+          "mitigation": "Time-box the waiting period with explicit decision checkpoints"
+        }
+      ],
+      "likely_reactions": [
+        {
+          "party": "Interested distributors",
+          "expected_reaction": "Shift attention toward more committed suppliers",
+          "assumption_label": "Interpretation"
+        }
+      ],
+      "time_effects": {
+        "short_term": "Protects downside while volatility remains high.",
+        "medium_term": "Creates slower market knowledge accumulation.",
+        "long_term": "Could preserve optionality or miss the best entry window."
+      },
+      "core_assumptions": {
+        "user_side": [
+          "Management can tolerate a delayed market-entry decision."
+        ],
+        "market_side": [
+          "Volatility may normalize enough to improve economics later."
+        ],
+        "other_parties_side": [
+          "Distributors will still be willing to re-engage after a delay."
+        ]
+      },
+      "breakpoints": [
+        "Trial partners disengage.",
+        "Freight or duty conditions fail to improve despite delay."
+      ],
+      "signals_to_monitor": [
+        "Relative price spread versus palm and soybean oil",
+        "Distributor responsiveness",
+        "Trial conversion to committed orders"
+      ],
+      "confidence": {
+        "level": "Medium",
+        "rationale": "Risk control is real, but delay may cost strategic access."
+      }
+    }
+  ],
+  "key_tradeoffs": [
+    "Brand control versus speed of volume learning",
+    "Margin protection versus distributor concessions",
+    "Retail visibility versus operational simplicity"
+  ],
+  "dominant_uncertainties": [
+    {
+      "uncertainty": "Sunflower premium resilience under palm or soybean repricing",
+      "why_it_matters": "It affects margin protection for every channel choice.",
+      "affected_options": [
+        "Premium Urban Retail Launch",
+        "Food-Service Distributor Wedge",
+        "Private Label Entry Through Regional Retailer"
+      ],
+      "reduction_or_test": "Track weekly landed-price spread and test buyer acceptance in first contracts."
+    },
+    {
+      "uncertainty": "Distributor willingness to operate within risk policy on payment terms",
+      "why_it_matters": "A repeat-volume path can become unattractive if DSO stretches too far.",
+      "affected_options": [
+        "Food-Service Distributor Wedge",
+        "Wait-and-Watch With Distributor Trials Only"
+      ],
+      "reduction_or_test": "Set volume guardrails and compare first reorder terms to finance thresholds."
+    }
+  ],
+  "suggested_shortlist": [
+    {
+      "option_name": "Food-Service Distributor Wedge",
+      "why_shortlisted": "Best balance of speed, manageable complexity, and realistic first-phase commercial load.",
+      "next_pressure_test": "Run first contract and repeat-order test with strict receivables guardrails."
+    },
+    {
+      "option_name": "Private Label Entry Through Regional Retailer",
+      "why_shortlisted": "Useful if the team prioritizes faster volume and can accept weaker strategic control.",
+      "next_pressure_test": "Model exclusivity and contribution margin under realistic deductions."
+    },
+    {
+      "option_name": "Wait-and-Watch With Distributor Trials Only",
+      "why_shortlisted": "Reasonable fallback if commodity volatility worsens before signing.",
+      "next_pressure_test": "Time-box the waiting period and confirm whether trial partners remain engaged."
+    }
+  ],
+  "best_current_working_hypothesis": "DniproSun should avoid a broad branded retail launch in phase one and instead use a food-service distributor wedge with strict receivables guardrails, while negotiating one private-label option as a conditional secondary path if volume proof arrives faster than expected.",
+  "what_would_change_this_view": [
+    "A sharp decline in palm oil pricing that makes sunflower premiums unsellable.",
+    "A distributor willing to fund a premium retail launch with materially lower commercial support requirements.",
+    "New trade-policy or FX moves that push landed margin below the internal floor even for food-service packs."
+  ],
+  "generated_at": "2026-06-06T21:30:00Z"
+}

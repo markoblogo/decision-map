@@ -1,91 +1,123 @@
 # Using DecisionMap Manually
 
-DecisionMap can be used without any app. Copy the system prompt, then run the stage prompts in order.
+This document is the operator runbook for running DecisionMap in a chat interface.
 
-## What you need
+For project overview, examples, and repository navigation, start with [README.md](README.md).  
+For normative protocol rules, use [protocol.md](protocol.md).
 
-- Any LLM chat interface (hosted or local).
-- Access to this repository's `prompts/`, `protocol.md`, and `schemas/`.
-- Your decision context (notes, metrics, constraints, and relevant evidence).
+## What You Need
 
-## Before you start
+- any LLM chat interface, hosted or local
+- access to `prompts/`, `protocol.md`, `examples/`, and `schemas/`
+- your decision context: notes, metrics, constraints, evidence, and relevant documents
 
-- Choose a business, product, market, or marketing decision.
-- Anonymize sensitive information if you are using a hosted LLM.
-- Prepare relevant notes, docs, links, metrics, or context.
-- Do not use DecisionMap for out-of-scope domains listed in `README.md` and `protocol.md`.
+## Before You Start
 
-## Copy-paste workflow
+- choose a business, product, market, or marketing decision inside DecisionMap scope
+- define the current pressure: deadline, competitor move, revenue target, launch window, margin pressure, or similar
+- anonymize sensitive information if you use a hosted model
+- gather any evidence you already have: metrics, research notes, customer feedback, market signals, or internal constraints
 
-### Step 0
+## Manual Chat Flow
 
-- Start a new chat with an LLM.
-- Paste `prompts/system_prompt.md` as the system/developer instruction if the tool supports it.
-- If the tool does not support system prompts, paste it as the first message and tell the model to follow it.
+### Step 0: Set the runtime prompt
 
-### Step 1
+- paste [prompts/system_prompt.md](prompts/system_prompt.md) as the system/developer instruction if the chat tool supports it
+- if not, paste it as the first message and tell the model to follow it as the operating protocol
 
-- Paste `prompts/01_intake.md`.
-- Add your situation/context.
-- Answer the intake questions.
+### Step 1: Intake
 
-### Step 2
+- paste `prompts/01_intake.md`
+- provide the situation, decision pressure, goals, constraints, and relevant evidence
+- expect a structured summary of facts, assumptions, interpretations, and unknowns
 
-- Paste `prompts/02_clarifying_questions.md`.
-- Ask the model to generate only decision-critical questions.
-- Answer them.
+### Step 2: Clarifying questions
 
-### Step 3
+- paste `prompts/02_clarifying_questions.md`
+- ask for only decision-critical questions
+- answer them directly; if something is unknown, mark it unknown rather than guessing
 
-- Paste `prompts/03_strategy_map.md`.
-- Generate the first strategy map.
-- Review the 3-7 options.
+### Step 3: First strategy map
 
-### Step 4
+- paste `prompts/03_strategy_map.md`
+- expect 3-7 distinct options with visible trade-offs, risks, required resources, and signals to monitor
+- compare the options before choosing a favorite
 
-- Select 1-3 options.
-- Paste `prompts/04_deep_dive.md`.
-- Ask the model to pressure-test selected options.
+### Step 4: Deep dive
 
-### Step 5
+- select 1-3 options
+- paste `prompts/04_deep_dive.md`
+- use this stage to pressure-test execution path, invalidators, and first experiments
 
-- Paste `prompts/05_decision_summary.md`.
-- Generate the final decision record and working hypothesis.
+### Step 5: Decision summary
 
-### Optional
+- paste `prompts/05_decision_summary.md`
+- produce the working strategic hypothesis, immediate actions, signals, and revisit triggers
 
-- Use `schemas/cascade_log.schema.json` if you are continuing the decision over time.
-- Use project mode manually by copying the decision summary into a new update session.
+## Stage 6: Cascade Log Workflow
 
-## Privacy
+Use Stage 6 when the decision stays alive after the first session.
 
-- Hosted models may process your data externally.
-- Anonymize names, companies, exact financials, customer data, internal documents, and personal data.
-- For sensitive work, use a local model or an approved internal environment.
+### Start a new cascade log
 
-## What good output looks like
+- copy [examples/templates/cascade_log_template.md](examples/templates/cascade_log_template.md)
+- create the first entry from the Stage 5 decision summary
+- if you need machine-readable output, adapt the same state into [schemas/cascade_log.schema.json](schemas/cascade_log.schema.json)
+
+### Reopen a decision later
+
+When you revisit the decision, provide:
+- the previous decision summary or latest cascade log
+- what changed since last review
+- new facts, broken assumptions, or new signals
+- whether the chosen strategy is still active, at risk, or invalidated
+
+Then ask the model to:
+- compare new facts vs previous assumptions
+- update strategy confidence
+- decide whether to continue, adapt, or pivot
+- append a new update entry
+
+### Append a new update
+
+Each update should include:
+- what happened since the last version
+- which assumptions were confirmed or invalidated
+- signal movement
+- outcomes observed
+- next actions
+- new revisit triggers
+
+Use these artifacts as references:
+- [examples/cascade_log_agri_commodity_market_entry.md](examples/cascade_log_agri_commodity_market_entry.md)
+- [examples/json/cascade_log.agri_market_entry.json](examples/json/cascade_log.agri_market_entry.json)
+
+## Validation Flow
+
+If you are producing JSON outputs for automation or archival:
+
+```bash
+python3 -m pip install jsonschema
+python3 scripts/validate_examples.py
+```
+
+This validates the public fixtures against the published schemas.
+
+## What Good Output Looks Like
 
 A good DecisionMap run should produce:
-
 - a clear decision statement
 - separated facts, assumptions, interpretations, and unknowns
-- a strategy map with multiple options
-- visible trade-offs
-- pressure-tested shortlisted options
-- a working hypothesis
-- monitoring and revisit triggers
+- a realistic strategy map with distinct options
+- visible trade-offs and breakpoints
+- a pressure-tested shortlist
+- a working strategic hypothesis
+- concrete signals and revisit triggers
 
-## Common mistakes
+## Common Operator Mistakes
 
-- asking for final advice too early
-- giving too little context
-- treating the first map as truth
-- ignoring resource constraints
-- choosing the most attractive option without testing assumptions
-
-## Related files
-
-- [README.md](README.md)
-- [protocol.md](protocol.md)
-- [prompts/](prompts/)
-- [examples/](examples/)
+- asking for a final recommendation before enough context exists
+- letting the model collapse multiple options into cosmetic variants
+- hiding assumptions inside confident language
+- treating an early map as final truth
+- forgetting to record signals and revisit triggers for ongoing decisions

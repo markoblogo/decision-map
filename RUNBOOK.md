@@ -3,13 +3,16 @@
 ## Quickstart
 
 <!-- AGENTSGEN:START section=quickstart -->
-- Read protocol and usage first:
+- Read the entrypoint and supporting docs first:
   - `README.md`
   - `USAGE.md`
   - `protocol.md`
 - Review prompts flow in order:
   - `prompts/system_prompt.md`
   - `prompts/01_intake.md` -> `prompts/05_decision_summary.md`
+- Validate public JSON fixtures when touching schemas/examples:
+  - `python3 -m pip install jsonschema`
+  - `python3 scripts/validate_examples.py`
 <!-- AGENTSGEN:END section=quickstart -->
 
 ## Common Tasks
@@ -22,6 +25,8 @@
 - Schema quick inspection:
   - `sed -n '1,260p' schemas/strategy_map.schema.json`
   - `sed -n '1,320p' schemas/cascade_log.schema.json`
+- Fixture validation:
+  - `python3 scripts/validate_examples.py`
 <!-- AGENTSGEN:END section=common_tasks -->
 
 ## Troubleshooting

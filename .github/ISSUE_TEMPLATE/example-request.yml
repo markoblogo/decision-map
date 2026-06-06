@@ -1,0 +1,28 @@
+name: Example request
+description: Request a new example or improve an existing one.
+title: "[Example]: "
+labels:
+  - examples
+body:
+  - type: input
+    id: vertical
+    attributes:
+      label: Vertical or domain
+      description: Which domain should the example cover?
+      placeholder: agri exports / FMCG / B2B services / SaaS
+    validations:
+      required: true
+  - type: textarea
+    id: scenario
+    attributes:
+      label: Scenario
+      description: Describe the decision context, pressure, and counterparties.
+    validations:
+      required: true
+  - type: textarea
+    id: credibility
+    attributes:
+      label: Why this example matters
+      description: Explain why this case would improve repo credibility or usability.
+    validations:
+      required: true
