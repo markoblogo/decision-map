@@ -162,6 +162,11 @@ Inside the ABVX ecosystem:
 
 None of these integrations are required for manual use.
 
+Related repos:
+
+- `lab.abvx` is the public hub where DecisionMap is cataloged: https://github.com/markoblogo/lab.abvx
+- `AGENTS.md_generator`, `SET`, `ID`, and `abvx-agent-skills` form the adjacent AI coding tools stack, but are optional here.
+
 ## Privacy
 
 DecisionMap itself does not require storing data, but hosted LLM APIs may process your input externally.
