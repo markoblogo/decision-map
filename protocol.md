@@ -76,6 +76,23 @@ All strategy confidence must use:
 
 Numeric confidence scoring is out of spec.
 
+### 6. Optional human-context bootstrap
+
+DecisionMap may accept optional external human-context artifacts, including `ID` profile files.
+
+If such artifacts are provided, the preferred order is:
+- `soul.md`
+- `profile.core.md`
+- `handshake.md`
+
+These artifacts may shape:
+- tone and formatting
+- decision-style preferences
+- stable user constraints
+- misalignment prevention
+
+They must not be treated as evidence about the market, product, customer, competitor, or external environment.
+
 ## Stage Sequence
 
 Follow this sequence unless the user already provides an artifact from a later stage:

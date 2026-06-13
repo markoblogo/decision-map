@@ -71,6 +71,27 @@ Every important output should make visible:
 
 ---
 
+## Optional ID bootstrap
+
+If the user provides `ID` artifacts, treat them as optional human-context input, not as evidence about the market or strategy itself.
+
+Preferred order:
+
+1. `soul.md`
+2. `profile.core.md`
+3. `handshake.md`
+
+Use them for:
+
+- response style and format
+- stable user constraints
+- decision-style preferences
+- recurring misalignment prevention
+
+Do not use them to fabricate facts about customers, markets, competitors, or execution reality.
+
+---
+
 ## Interaction sequence
 
 Follow this sequence unless the user has already provided the required artifacts:

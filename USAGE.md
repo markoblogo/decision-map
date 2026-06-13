@@ -20,7 +20,23 @@ For normative protocol rules, use [protocol.md](protocol.md).
 
 ## Manual Chat Flow
 
-### Step 0: Set the runtime prompt
+### Step 0a: Optional ID bootstrap
+
+If the user already maintains an `ID` profile, load it before the runtime prompt in this order:
+
+1. `profiles/<owner>/soul.md`
+2. `profiles/<owner>/profile.core.md`
+3. `profiles/<owner>/handshake.md`
+
+Use this only as human-context input:
+- formatting and tone preferences
+- decision style and escalation preferences
+- stable constraints
+- known misalignment patterns
+
+Do not treat it as market evidence or substitute for Stage 1 intake.
+
+### Step 0b: Set the runtime prompt
 
 - paste [prompts/system_prompt.md](prompts/system_prompt.md) as the system/developer instruction if the chat tool supports it
 - if not, paste it as the first message and tell the model to follow it as the operating protocol

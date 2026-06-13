@@ -54,6 +54,24 @@ It is intentionally out of scope for:
    - `prompts/05_decision_summary.md`
 4. If the decision continues over time, use the cascade log artifacts in `examples/`.
 
+## Optional ID Bootstrap
+
+DecisionMap stays standalone, but it can optionally consume `ID` as a portable human-context layer for longer-running strategic work.
+
+Recommended bootstrap order:
+
+1. `profiles/<owner>/soul.md`
+2. `profiles/<owner>/profile.core.md`
+3. `profiles/<owner>/handshake.md`
+
+Use that order when:
+
+- the same decision evolves across multiple sessions
+- the user has strong formatting, tone, or decision-style preferences
+- you want continuity without re-explaining the same working style every time
+
+Do not treat `ID` as market evidence or decision truth. It is only user-context and operating-constraints input.
+
 ## Canonical Examples
 
 These are the flagship examples for v0.2.
@@ -158,7 +176,7 @@ Inside the ABVX ecosystem:
 - `lab.abvx` can list it as a decision/strategy protocol artifact
 - `agentsgen` can maintain repo-local agent docs for contributors
 - `SET` can track or audit the repo
-- `ID` can optionally provide portable user context for longer-running decision work
+- `ID` can optionally provide portable user context for longer-running decision work, with `soul.md` as the preferred first-pass bootstrap
 
 None of these integrations are required for manual use.
 
