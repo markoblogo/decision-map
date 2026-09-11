@@ -18,17 +18,23 @@
   "presets": {},
   "defaults": {},
   "project": {
-    "primary_stack": "static",
+    "primary_stack": "documentation",
     "name": "DecisionMap",
     "repo_root": "."
   },
   "paths": {
     "docs": [
-      "README.md"
+      "README.md",
+      "USAGE.md",
+      "protocol.md",
+      "skills/decision-map/SKILL.md"
     ],
-    "ci": ""
+    "ci": ".github/workflows/validate-examples.yml"
   },
-  "commands": {},
+  "commands": {
+    "check": "python3 scripts/check_repo.py",
+    "validate_examples": "python3 scripts/validate_examples.py"
+  },
   "evidence": {
     "python": [],
     "node": [],
@@ -36,7 +42,7 @@
     "ci": []
   },
   "pack": {
-    "enabled": true,
+    "enabled": false,
     "llms_format": "txt",
     "output_dir": "docs/ai",
     "files": []

@@ -6,10 +6,25 @@
 [![GitHub stars](https://img.shields.io/github/stars/markoblogo/decision-map?style=social)](https://github.com/markoblogo/decision-map/stargazers)
 [![Last commit](https://img.shields.io/github/last-commit/markoblogo/decision-map)](https://github.com/markoblogo/decision-map/commits/main)
 [![Schema validation](https://github.com/markoblogo/decision-map/actions/workflows/validate-examples.yml/badge.svg)](https://github.com/markoblogo/decision-map/actions/workflows/validate-examples.yml)
+[![Latest release](https://img.shields.io/github/v/release/markoblogo/decision-map)](https://github.com/markoblogo/decision-map/releases/latest)
 
 **DecisionMap is a practical protocol for turning complex business, product, market, and marketing decisions into visible strategy maps.**
 
-It is a protocol + prompt toolkit, not a hosted service and not a substitute for leadership judgment.
+It is an installable Agent Skill, an open protocol, and a prompt toolkit. It is not a hosted service or a substitute for leadership judgment.
+
+## Try It in 60 Seconds
+
+Install the skill for Codex or another supported coding agent:
+
+```bash
+npx skills add markoblogo/decision-map --skill decision-map
+```
+
+Then ask:
+
+> Use DecisionMap to map this decision: [decision]. Compare realistic options, expose the assumptions, and tell me what evidence would change the recommendation.
+
+The skill is self-contained. The protocol, schemas, and worked examples in this repository provide deeper guidance and machine-readable outputs.
 
 ## What It Is
 
@@ -42,7 +57,7 @@ It is intentionally out of scope for:
 - mergers and acquisitions
 - layoffs or HR restructuring
 
-## Quick Start
+## Manual Quick Start
 
 1. Start with [USAGE.md](USAGE.md) for the manual runbook.
 2. Use [prompts/system_prompt.md](prompts/system_prompt.md) as the runtime system/developer prompt.
@@ -74,7 +89,7 @@ Do not treat `ID` as market evidence or decision truth. It is only user-context 
 
 ## Canonical Examples
 
-These are the flagship examples for v0.2.
+These are the flagship examples for v0.3.
 
 - [examples/agri_commodity_market_entry.md](examples/agri_commodity_market_entry.md) - compact agri/commodities strategy map for a Ukrainian sunflower oil exporter evaluating Indian market entry.
 - [examples/fmcg_route_to_market_full_run.md](examples/fmcg_route_to_market_full_run.md) - full walkthrough for an FMCG chilled dairy brand redesigning route-to-market expansion.
@@ -97,13 +112,19 @@ DecisionMap ships with normative schemas and real JSON fixtures:
 Validate the public examples with:
 
 ```bash
-python3 -m pip install jsonschema
-python3 scripts/validate_examples.py
+python3 -m pip install -r requirements-dev.txt
+python3 scripts/check_repo.py
+```
+
+Validate your own JSON output with:
+
+```bash
+python3 scripts/validate_examples.py path/to/output.json --schema strategy-map
 ```
 
 ## Cascade Log
 
-Stage 6 is a first-class capability in v0.2, not just a note.
+Stage 6 is a first-class capability, not just a note.
 
 Use it when the decision evolves over weeks or months and you need structured memory for:
 - what was decided
@@ -137,6 +158,7 @@ decision-map/
 ├── CONTRIBUTING.md
 ├── CHANGELOG.md
 ├── prompts/
+├── skills/decision-map/
 ├── schemas/
 ├── examples/
 │   ├── json/
@@ -162,11 +184,11 @@ Contributions are especially useful for:
 
 Roadmap is intentionally lightweight in-repo. Use GitHub Issues/Milestones for active work and prioritization.
 
-Current v0.2 direction:
-- canonical real-world examples
-- validated JSON fixtures
-- stronger cascade-log workflow
-- clearer contributor ergonomics
+Current direction:
+- more measured real-world examples
+- interoperable exports and schema fixtures
+- clearer evidence provenance
+- tested compatibility across Agent Skills clients
 
 ## ABVX Ecosystem
 
@@ -182,8 +204,9 @@ None of these integrations are required for manual use.
 
 Related repos:
 
-- `lab.abvx` is the public hub where DecisionMap is cataloged: https://github.com/markoblogo/lab.abvx
-- `AGENTS.md_generator`, `SET`, `ID`, and `abvx-agent-skills` form the adjacent AI coding tools stack, but are optional here.
+- [`lab.abvx`](https://github.com/markoblogo/lab.abvx) is the public hub where DecisionMap is cataloged.
+- [`abvx-agent-skills`](https://github.com/markoblogo/abvx-agent-skills) lists DecisionMap as a standalone companion skill.
+- [`AGENTS.md_generator`](https://github.com/markoblogo/AGENTS.md_generator), [`SET`](https://github.com/markoblogo/SET), and [`ID`](https://github.com/markoblogo/ID) are optional adjacent tools.
 
 ## Privacy
 
@@ -193,3 +216,7 @@ For sensitive work:
 - anonymize names, companies, exact numbers, and internal documents
 - remove customer data and personal data
 - use a local model or approved internal environment when needed
+
+## Security
+
+Report vulnerabilities privately as described in [SECURITY.md](SECURITY.md).

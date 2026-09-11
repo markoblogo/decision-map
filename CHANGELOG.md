@@ -4,6 +4,21 @@ All notable changes to DecisionMap should be recorded here.
 
 The format is intentionally lightweight and follows human-readable release notes rather than strict automation metadata.
 
+## [v0.3.0] - 2026-09-11
+
+### Added
+
+- self-contained `decision-map` Agent Skill with Codex metadata
+- validation for user-supplied strategy-map and cascade-log JSON files
+- repository-wide release checks, security policy, and dependency updates
+
+### Changed
+
+- quick start now leads with one-command skill installation
+- JSON validation auto-discovers bundled fixtures and enforces date formats
+- CI actions and contributor documentation are current for the v0.3 release
+- ABVX integrations are presented as optional companions rather than required dependencies
+
 ## [v0.2.0] - 2026-06-06
 
 ### Added
