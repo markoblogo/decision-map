@@ -11,6 +11,14 @@ For normative protocol rules, use [protocol.md](protocol.md).
 - access to `prompts/`, `protocol.md`, `examples/`, and `schemas/`
 - your decision context: notes, metrics, constraints, evidence, and relevant documents
 
+If your agent supports the Agent Skills format, install the packaged workflow first:
+
+```bash
+npx skills add markoblogo/decision-map --skill decision-map
+```
+
+The manual flow below remains useful when installation is unavailable or when you need precise control over every stage.
+
 ## Before You Start
 
 - choose a business, product, market, or marketing decision inside DecisionMap scope
@@ -113,11 +121,15 @@ Use these artifacts as references:
 If you are producing JSON outputs for automation or archival:
 
 ```bash
-python3 -m pip install jsonschema
+python3 -m pip install -r requirements-dev.txt
 python3 scripts/validate_examples.py
 ```
 
-This validates the public fixtures against the published schemas.
+With no file arguments, this validates every bundled JSON fixture. To validate your own output:
+
+```bash
+python3 scripts/validate_examples.py path/to/output.json --schema cascade-log
+```
 
 ## What Good Output Looks Like
 

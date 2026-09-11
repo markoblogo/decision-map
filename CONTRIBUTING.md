@@ -7,6 +7,7 @@ DecisionMap is a protocol and prompt toolkit. Keep contributions narrow, concret
 - stronger real-world examples
 - protocol clarity improvements
 - prompt alignment fixes
+- Agent Skill compatibility improvements
 - schema/example consistency improvements
 - operator guidance improvements in `README.md`, `USAGE.md`, or `RUNBOOK.md`
 
@@ -26,9 +27,8 @@ DecisionMap is a protocol and prompt toolkit. Keep contributions narrow, concret
 3. Run the public validation checks:
 
 ```bash
-python3 -m pip install jsonschema
-python3 scripts/validate_examples.py
-rg -n "Low-Medium|Medium-Low|confidence\\s*:\\s*[0-9]" README.md USAGE.md protocol.md prompts schemas examples
+python3 -m pip install -r requirements-dev.txt
+python3 scripts/check_repo.py
 ```
 
 ## Example Contributions

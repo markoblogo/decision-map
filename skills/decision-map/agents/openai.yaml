@@ -1,0 +1,4 @@
+interface:
+  display_name: "DecisionMap"
+  short_description: "Map complex strategic decisions into testable options"
+  default_prompt: "Use DecisionMap to structure this decision, compare realistic options, and identify what evidence would change the recommendation."
