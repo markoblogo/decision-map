@@ -225,7 +225,7 @@ Report vulnerabilities privately as described in [SECURITY.md](SECURITY.md).
 ## ABVX ecosystem
 
 - [AGENTS.md_generator](https://agentsmd.abvx.xyz/) — Keeps repository guidance and machine-readable context current. Current release: `v0.5.1`.
-- [abvx-agent-skills](https://abvx.xyz/work/abvx-agent-skills) — Uses shared, reviewable agent capabilities during maintenance. Current release: `v0.15.0`.
+- [abvx-agent-skills](https://abvx.xyz/work/abvx-agent-skills) — Uses shared, reviewable agent capabilities during maintenance. Current release: `v0.16.1`.
 
 _This block is generated from the reviewed ABVX ecosystem registry._
 <!-- ABVX:ECOSYSTEM:END -->
